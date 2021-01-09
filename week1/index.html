@@ -5,15 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>WDD 330 &verbar; Week 1</title>
     <meta name="author" content="Fred Hicken">
-    <meta name="description" content="WD330 Week 1">   
+    <meta name="description" content="WD330 Week 1">
+    <link href="main.css" rel="stylesheet">   
   </head>
 
   <body>
 	<header>
-        <h1>Week 1</h1>
-    </header>
-    
-    <h2>UNDER CONSTRUCTION</h2>
+    <h1>Week 1</h1>
+  </header>
+  <a href="../index.html">Return</a>
+  <div id="nDiv">  
+    <h2>Notes</h2>
+      <p>There are no sacred cows, we should look at every</br> 
+      portion of websites to see what there is that we can improve. Don't take</br> 
+      for granted that intrinsic knowledge to yourself may be alien to others. Test UI</br> 
+      and UX for all types of users across platforms to accommodate platform differences.</p>
+  </div>
+
+  <div id="qDiv"> 
+    <h2>Questions</h2>
+      <p>How to best deal with irreducible complexity? Look for alternatives?</p>
+      <p>Types of sites that mobile shouldn't come first?</p>
+      <p>How to handle JS blockers being used more nowadays, even preinstalled on some browsers?</p>
+  </div>
+  
+  <div id="tDiv">
+    <h2>Test Area</h2>
+    <section id="note_entry_area">
+      <h1>Note It!</h1>     
+      Description: <input id="description_input">
+      <textarea id="note_editor" placeholder="Note it down. Don't forget."></textarea>     
+      <button onclick=saveNote()>Save</button>   
+    </section>   
+    <section id="all_notes_display"></section>
+  </div>
+
+  <script src="note.js" type="text/javascript"></script>
+  <script src="showNote.js" type="text/javascript"></script>
+  <script>showAllNotes()</script>
   
   </body> 
 </html>
