@@ -12,22 +12,43 @@
   <body>
 	<header>
         <h1>Week 2</h1>
+        <a href="../index.html">Return</a>
   </header>
-    
-  <a href="../index.html">Return</a>
-  <div id="nDiv">  
-    <h2>Notes</h2>
-      <p></p>
-  </div>
+  <div id="content">
+    <div id="notesAndQuestions">
+      <div id="nDiv">  
+        <h2>Notes</h2>
+        <h3>Ternary Operator Example</h3>
+        <p>const bewitched = true;</p>
+        <p>const captainBritain = { name: 'Captain Britain', hero: bewitched ? false : true };</p>
+        <p>captainBritain { name: 'Captain Britain', hero: false }</p>
+        <h3>Dice Rolling Emulator</h3>
+        <p>If we want to generate a random integer, we can use the Math.floor() 
+          method that we saw earlier to remove the decimal part of the return value. 
+          The following code generates a random integer between 0 and 5 
+          (it will never be 6, because it always rounds down):</p>
+        <p>const dice = {</p>
+        <p>sides: 6,</p>
+        <p>roll() {</p>
+        <p>return Math.floor(this.sides * Math.random()) + 1; } }</p>
+      </div>
 
-  <div id="qDiv"> 
-    <h2>Questions</h2>
-      <p></p>
-  </div>
-  
-  <div id="tDiv">
-    <h2>Test Area</h2>
-  </div>
+      <div id="qDiv"> 
+        <h2>Questions</h2>
+        <p>Are the "touch" controls still in expermimental stages?</p>
+        <p>How random is math.random()?</p>
+        <p></p>
+      </div>
+    </div>
+    
+    <div id="tDiv">
+      <h2>Test Area</h2>
+      <h3>Greeting Professor Falken</h3>
+      <h3>Shall we play a game?</h3>
+      <div id="gameArea">
+      </div>
+    </div>
+  </div> 
   
   </body> 
 </html>

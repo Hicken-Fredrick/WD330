@@ -1,5 +1,7 @@
 body {
     display: flex;
+    width: 98%;
+    text-align: center;
     min-height: 100vh; 
     flex-direction: column;
     background-color: #121314;
@@ -11,9 +13,31 @@ ol, ul {
 	list-style: none;
 }
 
-/* #nDiv {} */
+#content {
+    display: flex;
+}
 
-/* #qDiv {} */
+#notesAndQuestions {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+}
+
+#notesAndQuestions p {
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+#tDiv {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+}
+
+#tDiv h3 {
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
 
 input{     
     border: none;     
@@ -47,3 +71,18 @@ textarea{
     resize:none;     
     overflow:scroll;
 }
+
+@media screen and (max-width: 980px) {
+    #content {
+        flex-direction: column;
+    }
+
+    #tDiv {
+        width: 100%;
+    }
+
+    #notesAndQuestions {
+        width: 100%;
+    }
+}
+
