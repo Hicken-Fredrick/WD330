@@ -13,7 +13,7 @@ const links = [
   window.onload = links.forEach(link => {
 
     var newli = document.createElement("li");
-    newli.innerHTML = "<a href=" + link.url + ">" + link.label + "</a>";
+    newli.innerHTML = `<a href="${link.url}">${link.label}</a>`;
 
     document.getElementById("notes").appendChild(newli);
 

@@ -39,6 +39,10 @@ ol, ul {
     margin-bottom: 0%;
 }
 
+#gameArea {
+    margin: 10px;
+}
+
 input{     
     border: none;     
     border-radius: 5px;     
