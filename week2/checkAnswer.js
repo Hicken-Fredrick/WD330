@@ -1,4 +1,0 @@
-function checkAnswer() {
-    //.trim()
-    //.tolower()
-}
