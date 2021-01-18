@@ -18,6 +18,7 @@ function computerTurn() {
 function playerTurn() {
     //get player input trim it and cast to lower
     let playerAnswer = document.getElementById("gameAnswer").value;
+    document.getElementById("gameAnswer").value = '';
     playerAnswer = playerAnswer.trim();
     playerAnswer= playerAnswer.toLowerCase();
 
@@ -28,7 +29,7 @@ function playerTurn() {
     if(playerAnswer == answer) {
         //put in player answer
         let fullText = document.getElementById("gameOutput").value;
-        fullText += `\n Falken: ${document.getElementById("gameAnswer").value}`;
+        fullText += `\n Falken: ${playerAnswer}`;
         document.getElementById("gameOutput").value = fullText;
         //iterate number
         localStorage.setItem("currentNum", Number(localStorage.getItem("currentNum"))+1);
@@ -48,3 +49,9 @@ function playerTurn() {
     //pass turn back to computer
     computerTurn();
 }
+
+function acceptEnter(keyEvent) {
+    if((keyEvent && keyEvent.keyCode == 13) || keyEvent == 0) {
+      playerTurn();
+    }
+ }

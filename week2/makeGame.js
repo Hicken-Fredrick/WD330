@@ -35,11 +35,13 @@ function buildGameArea() {
     newInputQuit.setAttribute("onclick", "onclick=deleteGame();");
     //game instructions
     let gameInstructions = document.createElement("p");
-    gameInstructions.innerText = `The game is simple, you answer the next sequential
-    number, BUT if the number is divisable by (${localStorage.getItem("fizz")}) answer Fizz, 
-    if the number is divisable by (${localStorage.getItem("buzz")}) answer Buzz, 
-    or if the number is divisable by both (${localStorage.getItem("fizz")}) 
-    & (${localStorage.getItem("buzz")}) answer FizzBuzz.  BEST OF LUCK!`
+    gameInstructions.innerText = `RULES
+    Answer the next sequential number
+    HOWEVER 
+    If the number is divisable by (${localStorage.getItem("fizz")}) answer Fizz 
+    If the number is divisable by (${localStorage.getItem("buzz")}) answer Buzz
+    If the number is divisable by both (${localStorage.getItem("fizz")}) & (${localStorage.getItem("buzz")}) answer FizzBuzz
+    I Will take the first move, Good luck Professor`
     //for displaying game
     let newOutput = document.createElement("textarea");
     newOutput.id = "gameOutput"
@@ -50,6 +52,7 @@ function buildGameArea() {
     newInputAnswer.id = "gameAnswer";
     newInputAnswer.type = "text";
     newInputAnswer.placeholder = "Answer";
+    newInputAnswer.onkeypress = acceptEnter
     let newInputSubmit = document.createElement("input");
     newInputSubmit.id = "gameSubmit";
     newInputSubmit.type = "button";
