@@ -37,8 +37,10 @@ function buildGameArea() {
     let gameInstructions = document.createElement("p");
     gameInstructions.innerText = `The game is simple, you say the number following 
     the previous number, BUT if the number is divisable by 
-    Fizz(${localStorage.getItem("fizz")}) you say Fizz and if the number is divisable by
-    Buzz(${localStorage.getItem("buzz")}) you say Buzz.  BEST OF LUCK!`
+    (${localStorage.getItem("fizz")}) you say Fizz, if the number is divisable by 
+    (${localStorage.getItem("buzz")}) you say Buzz, or if the number is divisable 
+    by both (${localStorage.getItem("fizz")}) & (${localStorage.getItem("buzz")}) 
+    you say FizzBuzz.  BEST OF LUCK!`
     //for displaying game
     let newOutput = document.createElement("textarea");
     newOutput.id = "gameOutput"
@@ -53,7 +55,7 @@ function buildGameArea() {
     newInputSubmit.id = "gameSubmit";
     newInputSubmit.type = "button";
     newInputSubmit.value = "Submit";
-    newInputSubmit.setAttribute("onclick", "onclick=checkAnswer();");
+    newInputSubmit.onclick = playerTurn;
 
     //put it all in
     document.getElementById("gameArea").appendChild(newInputQuit);
