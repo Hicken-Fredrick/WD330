@@ -36,11 +36,11 @@ function buildGameArea() {
     //game instructions
     let gameInstructions = document.createElement("p");
     gameInstructions.innerText = `RULES
-    Answer the next sequential number
+    Answer below the next sequential number
     HOWEVER 
-    If the number is divisable by (${localStorage.getItem("fizz")}) answer Fizz 
-    If the number is divisable by (${localStorage.getItem("buzz")}) answer Buzz
-    If the number is divisable by both (${localStorage.getItem("fizz")}) & (${localStorage.getItem("buzz")}) answer FizzBuzz
+    If your answer is divisable by (${localStorage.getItem("fizz")}) answer Fizz 
+    If your answer is divisable by (${localStorage.getItem("buzz")}) answer Buzz
+    If your answer is divisable by both (${localStorage.getItem("fizz")}) & (${localStorage.getItem("buzz")}) answer FizzBuzz
     I Will take the first move, Good luck Professor`
     //for displaying game
     let newOutput = document.createElement("textarea");
