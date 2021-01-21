@@ -10,6 +10,10 @@ const links = [
     {
       label: "Team Activity 1",
       url: "teamActivity1/index.html"
+    },
+    {
+      label: "Team Activity 2",
+      url: "teamActivity2/index.html"
     }
   ]
   
