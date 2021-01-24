@@ -1,5 +1,5 @@
 body {
-    display: flex;
+    display: block;
     width: 98%;
     text-align: center;
     min-height: 100vh; 
@@ -12,11 +12,19 @@ body {
 #content {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+}
+
+#playArea{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #opponentArea {
     max-width: 600px;
-    min-width: 200px;
+    min-width: 400px;
     height: 113px;
     background-color: #202020;
     border: .5px solid darkgray;
@@ -26,6 +34,8 @@ body {
 #buttonAndResult {
     border: 1px solid white;
     padding: 4px;
+    max-width: 600px;
+    min-width: 200px;
 }
 
 #playerArea {
@@ -35,4 +45,9 @@ body {
     background-color: #202020;
     border: .5px solid darkgray;
     margin: 15px;
+}
+
+h3 {
+    margin: 0;
+    padding: 0;
 }
