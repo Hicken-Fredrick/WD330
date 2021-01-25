@@ -7,7 +7,7 @@ function deal() {
         let card = Math.floor(Math.random() * 52)
         newCard.src = cardDeck[card].cardImg;
         total += cardDeck[card].cardValue;
-        setTimeout(() => document.getElementById("opponentArea").appendChild(newCard), 1000 * i);
+        setTimeout(() => document.getElementById("dealerArea").appendChild(newCard), 1000 * i);
     }
     document.getElementById("dealer").innerHTML = `Dealer - ${total}`;
     //reset total for player hand use
@@ -53,5 +53,24 @@ function playerHit() {
 }
 
 function computerTurn() {
+    //get current handle total for dealer
+    let total = document.getElementById("dealer").innerHTML.match(/(\d+)/);
+    total = Number(total[0]);
+    //if dealer has 16 or less he has to hit
+    while (total <= 16) {
+        total = dealerHit(total);
+    }
+    //update hand total
+    document.getElementById("dealer").innerHTML = `Dealer - ${total}`;
+}
 
+function dealerHit(total) {
+    //draw card
+    let card = Math.floor(Math.random() * 52)
+    //assign card
+    let newCard = document.createElement("img");
+    newCard.src = cardDeck[card].cardImg;
+    document.getElementById("dealerArea").appendChild(newCard)
+    //return new total
+    return total += cardDeck[card].cardValue;
 }
