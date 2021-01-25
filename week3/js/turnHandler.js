@@ -1,4 +1,6 @@
 function deal() {
+    //clean card area
+    cleanupCards();
     //setup total to us for hand value
     let total = 0;
     //put cards down slowly on dealer zone & set dealer hand value
@@ -48,8 +50,14 @@ function playerHit() {
     //update hand total
     let total = document.getElementById("player").innerHTML.match(/(\d+)/);
     total = Number(total[0]) + cardDeck[card].cardValue;
-
-    document.getElementById("player").innerHTML = `Player - ${total}`;
+    //check if player hand is bust on hit
+    if (total > 21) {
+        bust(total, 0);
+        document.getElementById("player").innerHTML = `Player - ${total}`;
+    }
+    else {
+        document.getElementById("player").innerHTML = `Player - ${total}`;
+    }
 }
 
 function computerTurn() {
@@ -60,8 +68,16 @@ function computerTurn() {
     while (total <= 16) {
         total = dealerHit(total);
     }
-    //update hand total
-    document.getElementById("dealer").innerHTML = `Dealer - ${total}`;
+    //check if dealer hand is bust on hit
+    if (total > 21) {
+        bust(total, 1);
+        document.getElementById("dealer").innerHTML = `Dealer - ${total}`;
+    }
+    else {
+        document.getElementById("dealer").innerHTML = `Dealer - ${total}`;
+        endOfDealerTurn(total);
+    }
+    
 }
 
 function dealerHit(total) {
@@ -73,4 +89,9 @@ function dealerHit(total) {
     document.getElementById("dealerArea").appendChild(newCard)
     //return new total
     return total += cardDeck[card].cardValue;
+}
+
+function cleanupCards() {
+    document.getElementById("dealerArea").innerHTML = '';
+    document.getElementById("playerArea").innerHTML = '';
 }
