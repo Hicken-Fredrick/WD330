@@ -9,7 +9,7 @@ function deal() {
         let card = Math.floor(Math.random() * 52)
         newCard.src = cardDeck[card].cardImg;
         total += cardDeck[card].cardValue;
-        setTimeout(() => document.getElementById("dealerArea").appendChild(newCard), 1000 * i);
+        setTimeout(() => document.getElementById("dealerArea").appendChild(newCard), 500 * i);
     }
     document.getElementById("dealer").innerHTML = `Dealer - ${total}`;
     //reset total for player hand use
@@ -20,7 +20,7 @@ function deal() {
         let card = Math.floor(Math.random() * 52)
         newCard.src = cardDeck[card].cardImg;
         total += cardDeck[card].cardValue;
-        setTimeout(() => document.getElementById("playerArea").appendChild(newCard), 1000 * i);
+        setTimeout(() => document.getElementById("playerArea").appendChild(newCard), 500 * i);
     }
     document.getElementById("player").innerHTML = `Player - ${total}`;
     //clear deal button, add hit and stay button
@@ -52,8 +52,8 @@ function playerHit() {
     total = Number(total[0]) + cardDeck[card].cardValue;
     //check if player hand is bust on hit
     if (total > 21) {
-        bust(total, 0);
         document.getElementById("player").innerHTML = `Player - ${total}`;
+        bust(total, 0);
     }
     else {
         document.getElementById("player").innerHTML = `Player - ${total}`;
@@ -70,8 +70,8 @@ function computerTurn() {
     }
     //check if dealer hand is bust on hit
     if (total > 21) {
-        bust(total, 1);
         document.getElementById("dealer").innerHTML = `Dealer - ${total}`;
+        bust(total, 1);
     }
     else {
         document.getElementById("dealer").innerHTML = `Dealer - ${total}`;

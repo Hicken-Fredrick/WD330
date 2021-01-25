@@ -14,7 +14,7 @@ const cardDeck = [
     {
         cardName: "Ace of Diamonds",
         cardValue: 1,
-        cardImg: "images/ad.gif",
+        cardImg: "images/adi.gif",
         stillInDeck: true
     },
     {

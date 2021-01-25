@@ -2,27 +2,26 @@ function endOfDealerTurn(total) {
     //clear area
     document.getElementById("buttonAndResult").innerHTML = '';
     //make button for new game
-    let dealButton = document.createElement("input");
-    dealButton.id = "deal";
-    dealButton.type = "button";
-    dealButton.value = "Deal";
-    dealButton.onclick = deal;
+    makeDealButton();
     //get player hand total
-
+    let playerTotal = document.getElementById("player").innerHTML.match(/(\d+)/);
+    playerTotal = playerTotal[0];
+    console.log(total);
+    console.log(playerTotal);
     //find winner
-
-    //output result to player
+    if (playerTotal > total) {
+        playerWin();
+    }
+    else {
+        playerLoss();
+    }
 }
 //bust takes total and state for player (0) or dealer (1)
 function bust(total, dealerPlayer) {
     //clear area
     document.getElementById("buttonAndResult").innerHTML = '';
     //make button for new game
-    let dealButton = document.createElement("input");
-    dealButton.id = "deal";
-    dealButton.type = "button";
-    dealButton.value = "Deal";
-    dealButton.onclick = deal;
+    makeDealButton();
     //build output bust result to player
     if (dealerPlayer == 0) {
         playerLoss(total);
@@ -31,8 +30,6 @@ function bust(total, dealerPlayer) {
     else {
         playerWin(total);
     }
-    //output
-    document.getElementById("buttonAndResult").appendChild(dealButton);
 }
 
 function playerWin(total) {
@@ -47,4 +44,15 @@ function playerLoss(total) {
     lossText.innerText = "YOU LOSE";
     lossText.id = "loss"
     document.getElementById("buttonAndResult").appendChild(lossText);
+}
+
+function makeDealButton() {
+    //build deal button
+    let dealButton = document.createElement("input");
+    dealButton.id = "deal";
+    dealButton.type = "button";
+    dealButton.value = "Deal";
+    dealButton.onclick = deal;
+    //place deal button
+    document.getElementById("buttonAndResult").appendChild(dealButton);
 }
