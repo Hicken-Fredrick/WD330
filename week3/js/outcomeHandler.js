@@ -33,6 +33,8 @@ function bust(total, dealerPlayer) {
 }
 
 function playerWin(total) {
+    addWin();
+    lifeTimeScore();
     let winText = document.createElement("p");
     winText.innerText = "YOU WIN!";
     winText.id = "win"
@@ -40,6 +42,8 @@ function playerWin(total) {
 }
 
 function playerLoss(total) {
+    addLoss();
+    lifeTimeScore();
     let lossText = document.createElement("p");
     lossText.innerText = "YOU LOSE";
     lossText.id = "loss"
