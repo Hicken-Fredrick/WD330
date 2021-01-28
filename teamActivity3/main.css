@@ -17,9 +17,9 @@ body {
 }
 
 #content div {
-    width: 32.5%;
+    width: 32%;
     /*inherits % of parent CANNOT USE MIN*/
-    height: 32.5%;
+    height: 32%;
 }
 
 .row1 {
