@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WDD 330 &verbar; Week 4</title>
+    <meta name="author" content="Fred Hicken">
+    <meta name="description" content="WD330 Week 4">
+    <link href="css/main.css" rel="stylesheet">   
+  </head>
+
+  <body>
+	<header>
+        <h1>Week 4</h1>
+        <a href="../">Return</a>
+  </header>
+  <div id="content">
+    <form>
+      <select name="dropdown" id="storedForms" onchange="fillForm()">
+        <option>New Car</option>
+      </select>
+      <div id="dataFields">
+        <input id="ownerName" type="text" placeholder="Owners Name">
+        <input id="carModel" type="text" placeholder="Car Model">
+        <label>Date Recieved:</label> <input id="dateRecieved" type="date">
+        <label>Date Finished:</label> <input id="dateRecieved" type="date">
+        <label>Notes:</label> <textarea rows="5" cols="60" name="text" placeholder="Enter text"></textarea>
+      </div>
+   </form>
+  </div>
+  
+  <script src="js/main.js" type="module"></script>
+  </body> 
+</html>
