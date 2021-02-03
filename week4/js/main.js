@@ -2,7 +2,7 @@ function say() {
     let formData = getFormData("fullForm");
     var details = {stuffs:{}};
     formData.forEach((value, key) => details.stuffs[key] = value);
-    details[`${details.stuffs.ownerName}${details.stuffs.carName}${details.stuffs.dateRecieved}`] = details.stuffs;
+    details[`car${details.stuffs.ownerName}${details.stuffs.carName}${details.stuffs.dateRecieved}`] = details.stuffs;
     delete details.stuffs;
     var json = JSON.stringify(details);
     console.log(json);
