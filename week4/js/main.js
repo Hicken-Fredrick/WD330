@@ -1,4 +1,11 @@
-function say() {
+import { fillForm } from './formBuilder.js'
+import { fillSelector } from './localStorage.js'
+
+//fill selector options IMPORT from localStorage
+window.onload = fillSelector();
+
+//save the form
+function saveForm() {
     let formData = getFormData("fullForm");
     var details = {stuffs:{}};
     formData.forEach((value, key) => details.stuffs[key] = value);
@@ -12,7 +19,9 @@ function say() {
     localStorage.setItem(Object.keys(details)[0], json);
   }
 
+//get form with passed in ID
 const getFormData = (name) => {
     const form = document.getElementById(`${name}`);
     return new FormData(form);
 }
+

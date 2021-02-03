@@ -1,4 +1,4 @@
-window.onload = function fillSelector() {
+export function fillSelector() {
     var values = [],
         keys = Object.keys(localStorage),
         i = keys.length;
