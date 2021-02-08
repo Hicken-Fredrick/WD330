@@ -16,9 +16,11 @@ function addTask() {
       //trim whitespace and send to class constructor
       let task = new todoClass(0, document.getElementById("taskContent").value.trim(), 0);
       let append = task.buildHTMLItem();
-      //reminder to put in functions for control
+      //!!REMINDER!! to put in functions for control
       let items = Array.from(append.children);
-      items[2].addEventListener("click", this.say);
+      console.log(items);
+      items[0].addEventListener("click", say);
+      items[2].addEventListener("click", say);
       //append
       document.getElementById("todoMain").appendChild(append);
    }
