@@ -4,8 +4,10 @@ import { fillTodoList } from './todoView.js'
 //add event listener for tasks
 document.getElementById("taskAdd").addEventListener("click", addTask);
 
-//check if previous data is stored and output
-if (localStorage.getItem("Todos") != '') {
+//grab previous data from local storage
+let currentTodos = localStorage.getItem("Todos");
+//output previous data if exists
+if (currentTodos != null) {
    window.onload = fillTodoList(localStorage.getItem("Todos"));
 }
 
@@ -23,6 +25,17 @@ function addTask() {
       items[2].addEventListener("click", say);
       //append
       document.getElementById("todoMain").appendChild(append);
+      //add to or create Todos from local storage
+      addToTodos(task);
+   }
+}
+
+function addToTodos(item) {
+   if (currentTodos != null) {
+      
+   }
+   else {
+      
    }
 }
 
