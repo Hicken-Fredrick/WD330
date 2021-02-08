@@ -6,3 +6,19 @@ body {
    /*../images/floor-tile.png*/
    text-align: center;
 }
+
+
+
+@media only screen and (min-width: 1081px) {
+  /* Above Mobile */
+  body {
+     color: pink;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+   /* Above Mobile */
+   body {
+      color: orange;
+   }
+ }
