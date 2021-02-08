@@ -1,0 +1,8 @@
+body {
+   background: #efefef url(../images/vintage-concrete.png) repeat fixed top left;
+   /* OTHER IMAGE PATHS */
+   /*../images/vintage-concrete.png*/
+   /*../images/oriental.png*/
+   /*../images/floor-tile.png*/
+   text-align: center;
+}
