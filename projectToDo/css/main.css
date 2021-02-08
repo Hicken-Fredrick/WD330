@@ -7,12 +7,33 @@ body {
    text-align: center;
 }
 
+#todoMain {
+   background: rgba(65, 64, 64, 0.555);
+   width: 95%;
+   min-height: 150px;
+   margin: 0 auto;
+}
 
+header {
+   margin: 1vw;
+}
+
+h1 {
+   margin: 0;
+}
+
+#addTaskMain {
+   margin: 1vw;
+}
+
+#addTaskMain input {
+   padding: .5vw;
+}
 
 @media only screen and (min-width: 768px) {
    /* Above Mobile */
    body {
-     color: gray;
+     color: rgb(88, 85, 85);
    }
    
  }
