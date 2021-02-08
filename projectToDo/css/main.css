@@ -5,6 +5,8 @@ body {
    /*../images/oriental.png*/
    /*../images/floor-tile.png*/
    text-align: center;
+   width: 100%;
+   margin: 0;
 }
 
 #todoMain {
@@ -26,8 +28,14 @@ h1 {
    margin: 1vw;
 }
 
-#addTaskMain input {
-   padding: .5vw;
+#taskName {
+   padding: 1vw;
+   margin-right: 0;
+}
+
+#taskAdd {
+   padding: 1vw 2.5vw 1vw 2.5vw;
+   margin-left: 0;
 }
 
 @media only screen and (min-width: 768px) {
