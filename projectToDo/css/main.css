@@ -14,6 +14,8 @@ body {
    width: 95%;
    min-height: 150px;
    margin: 0 auto;
+   display: flex;
+   flex-direction: column;
 }
 
 header {
@@ -41,6 +43,19 @@ h1 {
 .incomplete, .complete {
    width: 5%;
    height: 5%;
+}
+
+.left {
+   float: left;
+}
+
+.right {
+   float: right;
+}
+
+.task {
+   margin-bottom: .3vw;
+   background-color: rgba(207, 111, 32, 0.651);
 }
 
 @media only screen and (min-width: 768px) {
