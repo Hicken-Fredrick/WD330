@@ -19,9 +19,8 @@ export default class todoClass {
 
    buildHTMLItem() {
       const item = document.createElement("div");
-      item.className = "task"
-      item.innerHTML = `<input value="  " type="button" class="${this.completed ? "complete" : "incomplete"} left">
-      <span class="left">${this.content}</span>
+      item.className = `task`
+      item.innerHTML = `<span class="${this.completed ? "complete" : "incomplete"} left">${this.content}</span>
       <input class="right" value="Delete" type="button" id="${this.id}">`;
       return item;
    }

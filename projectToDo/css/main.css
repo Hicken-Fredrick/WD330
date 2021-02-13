@@ -1,6 +1,5 @@
 html, body {
    background: #efefef url(../images/vintage-concrete.png) repeat fixed top left;
-   background-size: contain;
    /* OTHER IMAGE PATHS */
    /*../images/vintage-concrete.png*/
    /*../images/oriental.png*/
@@ -50,6 +49,7 @@ h1 {
 
 .incomplete, .complete {
    width: 12%;
+   max-width: 45px;
 }
 
 .left {
@@ -73,6 +73,16 @@ h1 {
    border: 1px solid rgb(255, 255, 255);
 }
 
+.task .complete::before {
+   content: '\2713';
+   margin-right: 1vw;
+}
+
+.task span::before {
+   content: '';
+   margin-right: 1vw;
+}
+
 @media only screen and (min-width: 768px) {
    /* Above Mobile */
    body {
@@ -85,6 +95,5 @@ h1 {
    html, body {
       background: #efefef url(../images/vintage-concrete.png) repeat fixed top left;
       background-repeat: round;
-      background-size: cover;
    }
  }
