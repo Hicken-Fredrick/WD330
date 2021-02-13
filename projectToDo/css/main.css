@@ -5,6 +5,7 @@ html, body {
    /*../images/oriental.png*/
    /*../images/floor-tile.png*/
    text-align: center;
+   min-height: 100vh;
    width: 100%;
    margin: 0;
    height: 100%;
