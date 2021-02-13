@@ -1,5 +1,6 @@
 html, body {
    background: #efefef url(../images/vintage-concrete.png) repeat fixed top left;
+   background-size: contain;
    /* OTHER IMAGE PATHS */
    /*../images/vintage-concrete.png*/
    /*../images/oriental.png*/
@@ -19,8 +20,8 @@ html, body {
    margin: 0 auto;
    display: flex;
    flex-direction: column;
-   overflow-y: auto;
-   flex: 1 0 auto;
+   overflow-y: scroll;
+   flex: 1 1 auto;
 }
 
 header {
