@@ -66,7 +66,7 @@ h1 {
 
 .task {
    padding: .2vw;
-   height: 35px;
+   min-height: 35px;
    margin: .3vw;
    margin-bottom: .4vw;
    background-color: rgba(207, 111, 32, 0.651);
