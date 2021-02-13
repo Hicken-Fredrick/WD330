@@ -22,7 +22,7 @@ export default class todoClass {
       item.className = "task"
       item.innerHTML = `<input value="  " type="button" class="${this.completed ? "complete" : "incomplete"} left">
       <span class="left">${this.content}</span>
-      <input class="right" value="X" type="button" id="${this.id}">`;
+      <input class="right" value="Delete" type="button" id="${this.id}">`;
       return item;
    }
 }
