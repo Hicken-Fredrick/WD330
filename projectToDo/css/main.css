@@ -49,26 +49,26 @@ h1 {
 }
 
 .incomplete, .complete {
-   width: 5%;
-   height: 5%;
+   width: 12%;
 }
 
 .left {
+   margin: .6vw;
    float: left;
-   height: 100%;
+   height: 32px;
    margin-right: .6vw;
 }
 
 .right {
+   margin: .6vw;
    float: right;
-   height: 100%;
+   height: 32px;
 }
 
 .task {
-   padding: .2vw;
    min-height: 35px;
-   margin: .3vw;
-   margin-bottom: .4vw;
+   margin: 2px;
+   margin-bottom: 3px;
    background-color: rgba(207, 111, 32, 0.651);
    border: 1px solid rgb(255, 255, 255);
 }
@@ -85,6 +85,6 @@ h1 {
    html, body {
       background: #efefef url(../images/vintage-concrete.png) repeat fixed top left;
       background-repeat: round;
-      min-height: 100vh;
+      background-size: cover;
    }
  }
