@@ -24,12 +24,16 @@ function addTask() {
       document.getElementById("todoMain").appendChild(append);
       //add to or create Todos from local storage
       addToTodos(task);
+      //empty input
+      document.getElementById("taskContent").value = '';
    }
 }
 
 function addToTodos(item) {
    if (currentTodos != null) {
+      //add to obj
       todosObj.push(item);
+      //update local
       localStorage.setItem("Todos", JSON.stringify(todosObj));
    }
    else {
@@ -44,24 +48,55 @@ function addToTodos(item) {
 }
 
 function fillTodoList(todos) {
+   //get each item
    todos.forEach(item => {
+      //make it into obj
       let todo = new todoClass(item.id, item.content, item.completed)
+      //call obj HTML builder
       let append = todo.buildHTMLItem();
+      //add listeners
       addListeners(append);
+      //add to document
       document.getElementById("todoMain").appendChild(append);
    });
 }
 
 function check() {
+   //build array
    Array.from(this.children)[0].className = "complete left";
+   //add listener
    this.addEventListener("click", uncheck);
+   //remove old listener
    this.removeEventListener("click", check);
+   //update local
+   todosObj.every(todo => {
+      if(todo.id == this.lastElementChild.id) {
+         console.log(todo.completed);
+         todo.completed = true;
+         localStorage.setItem("Todos", JSON.stringify(todosObj));
+         return false;
+      }
+      return true;
+   })
 }
 
 function uncheck() {
+   //build array
    Array.from(this.children)[0].className = "incomplete left";
+   //add listener
    this.addEventListener("click", check);
+   //remove old listener
    this.removeEventListener("click", uncheck);
+   //update local
+   todosObj.every(todo => {
+      if(todo.id == this.lastElementChild.id) {
+         console.log(todo.completed);
+         todo.completed = false;
+         localStorage.setItem("Todos", JSON.stringify(todosObj));
+         return false;
+      }
+      return true;
+   })
 }
 
 function deleteTodo() {

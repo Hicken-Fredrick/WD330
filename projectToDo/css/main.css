@@ -32,6 +32,15 @@ h1 {
    margin: 0;
 }
 
+#dataAndSorting {
+   flex: 0 1 auto;
+   margin: 0 auto;
+   height: 4vw;
+   background: rgba(20, 20, 20, 0.651);
+   width: 95%;
+   color: white;
+}
+
 #addTaskMain {
    flex: 0 1 40px;
    margin: 1vw;
@@ -66,7 +75,7 @@ h1 {
 }
 
 .task {
-   min-height: 35px;
+   min-height: 40px;
    margin: 2px;
    margin-bottom: 3px;
    background-color: rgba(207, 111, 32, 0.651);
@@ -79,7 +88,7 @@ h1 {
 }
 
 .task span::before {
-   content: '';
+   content: 'O';
    margin-right: 1vw;
 }
 
