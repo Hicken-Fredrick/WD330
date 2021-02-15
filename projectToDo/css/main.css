@@ -85,23 +85,43 @@ span {
 #dataAndSorting {
    flex: 0 1 auto;
    margin: 0 auto;
-   height: 5vw;
+   height: 10vw;
    background: rgba(20, 20, 20, 0.651);
    width: 95%;
    color: white;
+   align-items: center;
+}
+
+#data {
+   height: 100%;
+   font-size: 4vw;
+}
+
+#data p {
+   margin: 0 auto;
+}
+
+#sorting input {
+   height: 75%;
+   min-height: 15px;
+   font-size: 3vw;
+   border-radius: 2px;
 }
 
 #addTaskMain {
+   width: 99%;
    flex: 0 1 40px;
-   margin: 1vw;
+   margin: 1.2vw;
 }
 
 #taskContent {
-   padding: 1vw;
+   width: 70%;
+   padding: 1.5vw;
    margin-right: 0;
 }
 
 #taskAdd {
+   width: 20%;
    padding: 1vw 2.5vw 1vw 2.5vw;
    margin-left: 0;
 }
@@ -110,6 +130,27 @@ span {
    /* Above Mobile */
    body {
      
+   }
+
+   #dataAndSorting {
+      height: 4vw;
+   }
+
+   #data {
+      height: 100%;
+      font-size: 1.3vw;
+   }
+
+   #sorting input {
+      font-size: 1.2vw;
+   }
+
+   #taskContent {
+      width: none;
+   }
+   
+   #taskAdd {
+      width: none;
    }
    
  }
