@@ -14,6 +14,7 @@ document.getElementById("showIncomplete").addEventListener("click", () => displa
 window.onload = ()=> {
    if (currentTodos != null) {
       fillTodoList(JSON.parse(localStorage.getItem("Todos")));
+      displayRemainingTasks(JSON.parse(localStorage.getItem("Todos")));
    }
 }
 
@@ -106,6 +107,22 @@ function displayIncomplete(todos) {
    });
 }
 
+function displayRemainingTasks(todos) {
+   let tasksRemaining = 0;
+   todos.forEach(item => {
+      if (item.completed == false) {
+         //add to tasksRemaing
+         tasksRemaining++;
+      }
+   });
+   let append = document.createElement("p");
+   append.innerText = `Tasks Remaining: ${tasksRemaining}`;
+   //empty current data
+   document.getElementById("data").innerHTML = '';
+   //add new data
+   document.getElementById("data").appendChild(append);
+}
+
 function check() {
    //build array
    Array.from(this.children)[0].className = "complete left";
@@ -122,6 +139,7 @@ function check() {
       }
       return true;
    })
+   displayRemainingTasks(todosObj);
 }
 
 function uncheck() {
@@ -140,6 +158,7 @@ function uncheck() {
       }
       return true;
    })
+   displayRemainingTasks(todosObj);
 }
 
 function deleteTodo() {
@@ -152,6 +171,7 @@ function deleteTodo() {
       i++
    })
    document.getElementById(`${this.id}`).parentElement.remove();
+   displayRemainingTasks(todosObj);
 }
 
 function addListeners (todo) {
@@ -160,4 +180,3 @@ function addListeners (todo) {
    else {todo.addEventListener("click", uncheck);}
    items[1].addEventListener("click", deleteTodo);
 }
-
