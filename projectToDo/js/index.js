@@ -1,14 +1,20 @@
 import todoClass from './todoClass.js';
 
-//add event listener for tasks
-document.getElementById("taskAdd").addEventListener("click", addTask);
-
 //grab previous data from local storage
 let currentTodos = localStorage.getItem("Todos");
 let todosObj = JSON.parse(currentTodos);
+
+//add event listener for tasks
+document.getElementById("taskAdd").addEventListener("click", addTask);
+document.getElementById("showAll").addEventListener("click", () => fillTodoList(todosObj));
+document.getElementById("showComplete").addEventListener("click", () => displayComplete(todosObj));
+document.getElementById("showIncomplete").addEventListener("click", () => displayIncomplete(todosObj));
+
 //output previous data if exists
-if (currentTodos != null) {
-   window.onload = fillTodoList(JSON.parse(localStorage.getItem("Todos")));
+window.onload = ()=> {
+   if (currentTodos != null) {
+      fillTodoList(JSON.parse(localStorage.getItem("Todos")));
+   }
 }
 
 //add task
@@ -39,7 +45,6 @@ function addToTodos(item) {
    else {
       //set
       let toDoList = [item];
-      todosObj = toDoList;
       //push to local
       let localCopy = JSON.stringify(toDoList);
       localStorage.setItem("Todos", localCopy);
@@ -48,6 +53,8 @@ function addToTodos(item) {
 }
 
 function fillTodoList(todos) {
+   if(todos == null) { return; }
+   document.getElementById("todoMain").innerHTML = '';
    //get each item
    todos.forEach(item => {
       //make it into obj
@@ -61,6 +68,44 @@ function fillTodoList(todos) {
    });
 }
 
+function displayComplete(todos) {
+   if(todos == null) { return; }
+   document.getElementById("todoMain").innerHTML = '';
+   //get each item
+   todos.forEach(item => {
+      //make it into obj
+      let todo = new todoClass(item.id, item.content, item.completed)
+      //check if complete
+      if (todo.completed == true) {
+         //call obj HTML builder
+         let append = todo.buildHTMLItem();
+         //add listeners
+         addListeners(append);
+         //add to document
+         document.getElementById("todoMain").appendChild(append);
+      }
+   });
+}
+
+function displayIncomplete(todos) {
+   if(todos == null) { return; }
+   document.getElementById("todoMain").innerHTML = '';
+   //get each item
+   todos.forEach(item => {
+      //make it into obj
+      let todo = new todoClass(item.id, item.content, item.completed)
+      //check if incomplete
+      if (todo.completed == false) {
+         //call obj HTML builder
+         let append = todo.buildHTMLItem();
+         //add listeners
+         addListeners(append);
+         //add to document
+         document.getElementById("todoMain").appendChild(append);
+      }
+   });
+}
+
 function check() {
    //build array
    Array.from(this.children)[0].className = "complete left";
@@ -71,7 +116,6 @@ function check() {
    //update local
    todosObj.every(todo => {
       if(todo.id == this.lastElementChild.id) {
-         console.log(todo.completed);
          todo.completed = true;
          localStorage.setItem("Todos", JSON.stringify(todosObj));
          return false;
@@ -90,7 +134,6 @@ function uncheck() {
    //update local
    todosObj.every(todo => {
       if(todo.id == this.lastElementChild.id) {
-         console.log(todo.completed);
          todo.completed = false;
          localStorage.setItem("Todos", JSON.stringify(todosObj));
          return false;
@@ -117,3 +160,4 @@ function addListeners (todo) {
    else {todo.addEventListener("click", uncheck);}
    items[1].addEventListener("click", deleteTodo);
 }
+

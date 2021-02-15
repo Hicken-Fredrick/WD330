@@ -32,28 +32,8 @@ h1 {
    margin: 0;
 }
 
-#dataAndSorting {
-   flex: 0 1 auto;
-   margin: 0 auto;
-   height: 4vw;
-   background: rgba(20, 20, 20, 0.651);
-   width: 95%;
-   color: white;
-}
-
-#addTaskMain {
-   flex: 0 1 40px;
-   margin: 1vw;
-}
-
-#taskContent {
-   padding: 1vw;
-   margin-right: 0;
-}
-
-#taskAdd {
-   padding: 1vw 2.5vw 1vw 2.5vw;
-   margin-left: 0;
+span {
+   color: black;
 }
 
 .incomplete, .complete {
@@ -83,19 +63,47 @@ h1 {
 }
 
 .task .complete::before {
-   content: '\2713';
+   content: '\1F5F9';
+   font-size: 21px;
+   color: white;
    margin-right: 1vw;
 }
 
-.task span::before {
-   content: 'O';
+.task .incomplete::before {
+   content: '\25A1';
+   font-size: 30px;
+   color: white;
    margin-right: 1vw;
+}
+
+#dataAndSorting {
+   flex: 0 1 auto;
+   margin: 0 auto;
+   height: 5vw;
+   background: rgba(20, 20, 20, 0.651);
+   width: 95%;
+   color: white;
+}
+
+#addTaskMain {
+   flex: 0 1 40px;
+   margin: 1vw;
+}
+
+#taskContent {
+   padding: 1vw;
+   margin-right: 0;
+}
+
+#taskAdd {
+   padding: 1vw 2.5vw 1vw 2.5vw;
+   margin-left: 0;
 }
 
 @media only screen and (min-width: 768px) {
    /* Above Mobile */
    body {
-     color: rgb(88, 85, 85);
+     
    }
    
  }
