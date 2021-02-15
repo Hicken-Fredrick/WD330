@@ -61,6 +61,7 @@ span {
 }
 
 .task {
+   align-items: center;
    min-height: 40px;
    margin: 2px;
    margin-bottom: 3px;
@@ -72,14 +73,14 @@ span {
    content: '\2714';
    font-size: 21px;
    color: white;
-   margin-right: 1vw;
+   margin-right: 2vw;
 }
 
 .task .incomplete::before {
    content: '\25A1';
-   font-size: 30px;
+   font-size: 25px;
    color: white;
-   margin-right: 1vw;
+   margin-right: 2vw;
 }
 
 #dataAndSorting {
