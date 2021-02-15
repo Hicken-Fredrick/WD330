@@ -69,7 +69,7 @@ span {
 }
 
 .task .complete::before {
-   content: '\1F5F9';
+   content: '\2714';
    font-size: 21px;
    color: white;
    margin-right: 1vw;
