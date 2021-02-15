@@ -129,11 +129,12 @@ span {
 @media only screen and (min-width: 768px) {
    /* Above Mobile */
    body {
-     
+     width: 50%;
+     margin: 0 auto;
    }
 
    #dataAndSorting {
-      height: 4vw;
+      height: 3vw;
    }
 
    #data {
@@ -142,15 +143,24 @@ span {
    }
 
    #sorting input {
-      font-size: 1.2vw;
+      font-size: .9vw;
+   }
+
+   #addTaskMain {
+      width: 99%;
+      flex: 0 1 40px;
+      margin: .5vw;
    }
 
    #taskContent {
-      width: none;
+      margin: 0;
+      padding: 1vw;
+      width: 35%;
    }
    
+   
    #taskAdd {
-      width: none;
+      width: 15%;
    }
    
  }
