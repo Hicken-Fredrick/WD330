@@ -16,6 +16,15 @@ window.onload = ()=> {
       fillTodoList(JSON.parse(localStorage.getItem("Todos")));
       displayRemainingTasks(JSON.parse(localStorage.getItem("Todos")));
    }
+   else {
+      //make element
+      let append = document.createElement("p");
+      append.innerText = `Tasks Remaining: 0`;
+      //empty current data
+      document.getElementById("data").innerHTML = '';
+      //add new data
+      document.getElementById("data").appendChild(append);
+   }
 }
 
 //add task
