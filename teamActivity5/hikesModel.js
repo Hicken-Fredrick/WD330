@@ -2,7 +2,7 @@
 const hikeList = [
    {
      name: 'Bechler Falls',
-     imgSrc: '//byui-cit.github.io/cit261/examples/',
+     imgSrc: 'falls.jpg',
      imgAlt: 'Image of Bechler Falls',
      distance: '3 miles',
      difficulty: 'Easy',
@@ -13,7 +13,7 @@ const hikeList = [
    },
    {
      name: 'Teton Canyon',
-     imgSrc: '//byui-cit.github.io/cit261/examples/',
+     imgSrc: 'falls.jpg',
      imgAlt: 'Image of Bechler Falls',
      distance: '3 miles',
      difficulty: 'Easy',
@@ -24,7 +24,7 @@ const hikeList = [
    },
    {
      name: 'Denanda Falls',
-     imgSrc: '//byui-cit.github.io/cit261/examples/',
+     imgSrc: 'falls.jpg',
      imgAlt: 'Image of Bechler Falls',
      distance: '3 miles',
      difficulty: 'Easy',
