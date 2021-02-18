@@ -1,16 +1,23 @@
 // The controller needs access to both the model and the view...so let's import them
 import HikeModel from './hikesModel.js';
 import HikesView from './hikesView.js';
+import comment from './comment.js';
 
 // Just like with the view we should organize the functions we need to our controller. Let's use a class for this one
 
 export default class HikesController {
   // a class needs a constructor
-  constructor(parentId) {
-    this.parentElement = document.getElementById(parentId);
-    this.hikeModel = new HikeModel();
-    this.hikesView = new HikesView(parentId);
+   constructor(parentId) {
+      this.parentElement = document.getElementById(parentId);
+      this.hikeModel = new HikeModel();
+      this.hikesView = new HikesView(parentId);
+      this.comments = new this.comments(parentId)
   }
+  showComments(){
+   const commentList = this.commentModel.getAllComments();
+   this.commentView.renderCommentList(this.parentElement, commentList);
+   this.commentView.renderCommentInsert(this.parentElement);
+ }
   showHikeList() {
     // the list of hikes will come from the model now...
     const hikeList = this.hikeModel.getAllHikes();
