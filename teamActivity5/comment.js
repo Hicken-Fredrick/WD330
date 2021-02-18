@@ -1,15 +1,22 @@
-const commentList = JSON.parse(localStorage.getItem("comments"));
-
 class commentModel {
-   newComment(type, date, hikeName, content) {
+   constructor(type) {
       this.type = type;
-      this.date = date;
-      this.hikeName = hikeName;
-      this.content = content;
-      commentsList.push(this);
+      this.comment = getLocal(this.type) || [];
    }
 
-   getCommentsByHike(hikeName) {
+   newComment(type, hikeName, content) {
+      const newComment = {
+         type: type,
+         hikeName: hikeName,
+         content: content,
+         date: new Date()
+      }
+      this.comment.push(newComment)
+
+      addToLocal(this.comment);
+   }
+
+   getComments(hikeName) {
       if (hikeName === null) {
          return commentList;
       }
@@ -25,6 +32,14 @@ class commentModel {
    }
 }
 
+function getLocal() {
+
+}
+
+function addToLocal() {
+
+}
+
 const commentInsertion = `<div class="addComment">
 <h2>Add a comment</h2>
 <input type="text" id="commentEntry" />
@@ -33,15 +48,15 @@ const commentInsertion = `<div class="addComment">
 <h2>Comments</h2>
 <ul class="comments"></ul>`;
 
-class comments {
+function renderCommentList() {
 
-   renderCommentList() {
-
-   }
-
-   renderCommentInsert() {
-      
-   }
 }
 
-export default comment;
+class comments {
+   constructor(id) {
+      this.id = id;
+   }
+   
+}
+
+export default comments;

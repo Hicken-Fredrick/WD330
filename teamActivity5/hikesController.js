@@ -11,7 +11,7 @@ export default class HikesController {
       this.parentElement = document.getElementById(parentId);
       this.hikeModel = new HikeModel();
       this.hikesView = new HikesView(parentId);
-      this.comments = new this.comments(parentId)
+      this.comments = new comment(parentId)
   }
   showComments(){
    const commentList = this.commentModel.getAllComments();
