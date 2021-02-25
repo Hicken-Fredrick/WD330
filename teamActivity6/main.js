@@ -88,6 +88,7 @@ function getPokemonData(pokemon) {
             <p>${pokemonData.stats[5].stat.name}: ${pokemonData.stats[5].base_stat}</p>
             </div>
          </div>`;
+         document.getElementById(pokemonData.name).addEventListener("click", () => showMoreInfo(pokemonData.name))
       })
    }catch(err){
       console.log(err);
@@ -118,4 +119,16 @@ function addBotNav(url, name) {
 function topFunction() {
    document.body.scrollTop = 0;
    document.documentElement.scrollTop = 0; 
- } 
+}
+
+function showMoreInfo(id) {
+   document.getElementById(id).lastChild.style.display = "flex";
+   document.getElementById(id).removeEventListener("click", () => showMoreInfo(id));
+   document.getElementById(id).addEventListener("click", () => showLessInfo(id));
+}
+
+function showLessInfo(id) {
+   document.getElementById(id).lastChild.style.display = "none";
+   document.getElementById(id).removeEventListener("click", () => showLessInfo(id));
+   document.getElementById(id).addEventListener("click", () => showMoreInfo(id));
+}
