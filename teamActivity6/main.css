@@ -39,4 +39,8 @@ header h1 {
    background-color: rgb(99, 97, 97);
    border-radius: 5px;
    margin: 0;
- }
+}
+
+.basicInfo {
+   text-transform: capitalize;
+}
