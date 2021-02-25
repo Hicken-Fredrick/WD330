@@ -36,6 +36,10 @@ const links = [
       url: "teamActivity5/hiking-complete.html"
     },
     {
+      label: "Team Activity 6",
+      url: "teamActivity6/"
+    },
+    {
       label: "To-Do Project",
       url: "projectToDo/"
     }
