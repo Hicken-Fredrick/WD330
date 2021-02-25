@@ -62,7 +62,6 @@ function getPokemonData(pokemon) {
       .then((response) => response.json())
       //as data is recived change data within pre built object
       .then((pokemonData) => {
-         console.log(pokemonData);
          let typeInfo = '';
          pokemonData.types.forEach(typeData => {
             typeInfo += `${typeData.type.name} `;
@@ -78,6 +77,16 @@ function getPokemonData(pokemon) {
          </div>
          </div>
          <div class="extraInfo">
+            <div class="extraInfoLeft">
+            <p>${pokemonData.stats[0].stat.name}: ${pokemonData.stats[0].base_stat}</p>
+            <p>${pokemonData.stats[1].stat.name}: ${pokemonData.stats[1].base_stat}</p>
+            <p>${pokemonData.stats[2].stat.name}: ${pokemonData.stats[2].base_stat}</p>
+            </div>
+            <div class="extraInfoRight">
+            <p>${pokemonData.stats[3].stat.name}: ${pokemonData.stats[3].base_stat}</p>
+            <p>${pokemonData.stats[4].stat.name}: ${pokemonData.stats[4].base_stat}</p>
+            <p>${pokemonData.stats[5].stat.name}: ${pokemonData.stats[5].base_stat}</p>
+            </div>
          </div>`;
       })
    }catch(err){
