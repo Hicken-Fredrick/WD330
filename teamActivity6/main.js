@@ -1,4 +1,5 @@
-const url = 'https://pokeapi.co/api/v2/pokemon/';
+const url = 'https://pokeapi.co/api/v2/pokemon';
+let count = 0;
 window.onload = makePage(url);
 
 //build page using url code for pagination
@@ -15,25 +16,27 @@ async function makePage(url) {
    .then( (response) => response.json())
    //build items through the data
    .then( (pokemons) => {
-         document.getElementById("navTop").innerHTML = '';
-         document.getElementById("navBot").innerHTML = '';
-         document.getElementById("pokemonHolder").innerHTML = '';
-         //if front no previous button
-         if(pokemons.previous != null) {
-            addNavButton(pokemons.previous, "previous");
+      count = pokemons.count;
+      console.log(count);
+      document.getElementById("navTop").innerHTML = '';
+      document.getElementById("navBot").innerHTML = '';
+      document.getElementById("pokemonHolder").innerHTML = '';
+      //if front no previous button
+      if(pokemons.previous != null) {
+         addNavButton(pokemons.previous, "previous");
+      }
+      //if end no next button
+      if(pokemons.next != null) {
+         addNavButton(pokemons.next, "next");
+      }
+      //step thorugh every pokemon in order
+      for (pokemon of pokemons.results) {
+         try{
+            getPokemonData(pokemon);
+         }catch(err){
+            console.log(err);
          }
-         //if end no next button
-         if(pokemons.next != null) {
-            addNavButton(pokemons.next, "next");
-         }
-         //step thorugh every pokemon in order
-         for (pokemon of pokemons.results) {
-            try{
-               getPokemonData(pokemon);
-            }catch(err){
-               console.log(err);
-            }
-         }
+      }
    })
    .catch( error => console.log('There was an error!') )
 }
@@ -82,6 +85,7 @@ function addNavButton(url, name) {
 
 //add bot bot nav buttons
 function addBotNav(url, name) {
+   console.log(url);
    let button = document.createElement("button");
    button.addEventListener("click", () => makePage(url));
    button.addEventListener("click", () => topFunction());
