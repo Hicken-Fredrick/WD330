@@ -122,13 +122,11 @@ function topFunction() {
 }
 
 function showMoreInfo(id) {
-   document.getElementById(id).lastChild.style.display = "flex";
-   document.getElementById(id).removeEventListener("click", () => showMoreInfo(id));
-   document.getElementById(id).addEventListener("click", () => showLessInfo(id));
-}
-
-function showLessInfo(id) {
-   document.getElementById(id).lastChild.style.display = "none";
-   document.getElementById(id).removeEventListener("click", () => showLessInfo(id));
-   document.getElementById(id).addEventListener("click", () => showMoreInfo(id));
+   console.log("called")
+   element = document.getElementById(id).lastElementChild;
+   if(element.style.display == "none") {
+      element.style.display = "flex"
+   }else {
+      element.style.display = "none"
+   }
 }
