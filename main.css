@@ -1,4 +1,5 @@
 body {
+   text-align: center;
     display: flex;
     min-height: 100vh; 
     flex-direction: column;
@@ -7,14 +8,31 @@ body {
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
+section {
+   border: .5px solid darkgray;
+   margin-bottom: 10px;
+   border-radius: 5px;
+   background-color: rgba(8, 7, 7, 0.384);
+}
+
+h2 {
+ padding: 0;
+ margin-top: 3px;
+ margin-bottom: 0;
+}
+
 ol, ul {
+   justify-content: center;
 	list-style: none;
    display: flex;
    flex-wrap: wrap;
+   margin: 0;
+   padding: 5px;
+   border-radius: 5px;
 }
 
 li {
-   margin: 5px;
+   margin: 10px;
    background-color: rgb(75, 73, 73);
    padding: 10px;
    border-radius: 5px;
