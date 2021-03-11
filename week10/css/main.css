@@ -17,5 +17,7 @@ li {
    list-style-type: none;
    margin: 5px;
    padding: 3px;
+   padding-top: 8px;
+   padding-bottom: 8px;
    border: 1px solid gray;
 }
