@@ -17,12 +17,14 @@ export default class quakesController {
     this.quakes = new quake();
     this.quakesView = new quakesView();
   }
+
   async init() {
     // use this as a place to grab the element identified by this.parent, do the initial call of this.initPos(), and display some quakes by calling this.getQuakesByRadius()
     this.parentElement = document.querySelector(this.parent);
     await this.initPos();
     this.getQuakesByRadius(100);
   }
+
   async initPos() {
     // if a position has not been set
     if (this.position.lat === 0) {
@@ -54,12 +56,17 @@ export default class quakesController {
     // render the list to html
     this.quakesView.renderQuakeList(quakeList, this.parentElement);
     // add a listener to the new list of quakes to allow drill down in to the details
-    this.parentElement.addEventListener('touchend', e => {
-      this.getQuakeDetails(e.target.dataset.id);
+    this.parentElement.childNodes.forEach(element => {
+      element.addEventListener('click', e => {
+         this.getQuakeDetails(e.target.attributes.id.nodeValue);    
     });
+   });
   }
+
   async getQuakeDetails(quakeId) {
-    // get the details for the quakeId provided from the model, then send them to the view to be displayed
-   
-  }
+   //could try detials call https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=uu60314892&format=geojson
+   // get the details for the quakeId provided from the model, then send them to the view to be displayed
+   const singleQuake = this.quakes.getQuakeById(quakeId);
+   this.quakesView.renderQuake(singleQuake, document.getElementById(quakeId));
+   }
 }
