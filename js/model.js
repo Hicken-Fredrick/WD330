@@ -14,7 +14,11 @@ const notes = [
    {
      label: "Week 04 Notes",
      url: "week4/"
-   }
+   },
+   {
+      label: "Week 10 Notes",
+      url: "week10/"
+    }
  ]
 
  const teamActivities = [
