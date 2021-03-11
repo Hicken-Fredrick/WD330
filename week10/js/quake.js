@@ -7,7 +7,7 @@ export default class quake {
     // this is where we will store the last batch of retrieved quakes in the model.  I don't always do this...in this case the api doesn't have an endpoint to request one quake.
     this._quakes = [];
   }
-  async getEarthQuakesByRadius(position, radius = 100) {
+  async getEarthQuakesByRadius(position, radius) {
    // use the getJSON function and the position provided to build out the correct URL to get the data we need.  Store it into this._quakes, then return it
    const response = getJSON(`${this.baseUrl}&latitude=${position.lat}&longitude=${position.lon}&maxradiuskm=${radius}`);
    await response.then((data) => {

@@ -44,21 +44,23 @@ export default class quakesController {
     }
   }
 
-  async getQuakesByRadius(radius = 100) {
+  async getQuakesByRadius(radius) {
     // this method provides the glue between the model and view. Notice it first goes out and requests the appropriate data from the model, then it passes it to the view to be rendered.
     //set loading message
     this.parentElement.innerHTML = 'Loading...';
     // get the list of quakes in the specified radius of the location
     const quakeList = await this.quakes.getEarthQuakesByRadius(
       this.position,
-      100
+      radius
     );
     // render the list to html
     this.quakesView.renderQuakeList(quakeList, this.parentElement);
     // add a listener to the new list of quakes to allow drill down in to the details
     this.parentElement.childNodes.forEach(element => {
       element.addEventListener('click', e => {
-         this.getQuakeDetails(e.target.attributes.id.nodeValue);    
+         if(e.target.attributes.id.nodeValue != undefined){
+         this.getQuakeDetails(e.target.attributes.id.nodeValue);
+         }    
     });
    });
   }
