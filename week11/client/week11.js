@@ -38,6 +38,7 @@ async function getPosts() {
    try {
      const data = await makeRequest('posts', 'GET', null, authUser.token);
      // make sure the element is shown
+     console.log(data);
      document.getElementById('content').classList.remove('hidden');
      var ul = document.getElementById('list');
      ul.innerHTML = '';
@@ -46,6 +47,9 @@ async function getPosts() {
       let p = document.createElement('p');
       li.innerText = data[i].title;
       p.innerText = data[i].content;
+      if(data[i].userId == authUser.user.id){
+         li.classList.add('usersPost'); 
+      } 
       li.appendChild(p);
       ul.appendChild(li);
      }
