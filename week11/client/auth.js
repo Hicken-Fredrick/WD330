@@ -18,17 +18,12 @@ export default class Auth {
     };
     try {
       // 1. use the makeRequest function to pass our credentials to the server
-      const key = makeRequest('login', 'POST', {
-         password: postData.password,
-         email: postData.email
-      });
+      const key = await makeRequest('login', 'POST', postData);
       // 2. if we get a successful response...we have a token!  Store it since we will need to send it with every request to the API.
-      if(key) {
-         this.jwtToken = key;
-      }
+      this.jwtToken = key.accessToken;
       // let's get the user details as well and store them locally in the class
       // you can pass a query to the API by appending it on the end of the url like this: 'users?email=' + email
-      this.user = await this.getCurrentUser(username.value);
+      this.user = await this.getCurrentUser(postData.email);
       // hide the login form.
       document.getElementById('login').classList.add('hidden');
       // clear the password
@@ -43,11 +38,34 @@ export default class Auth {
       console.log(error);
     }
   }
+
+  async loginWithDetails(username = null, password = null) {
+   const postData = {
+     email: username,
+     password: password  
+   };
+   try {
+     // 1. use the makeRequest function to pass our credentials to the server
+     const key = await makeRequest('login', 'POST', postData);
+     // 2. if we get a successful response...we have a token!  Store it since we will need to send it with every request to the API.
+     this.jwtToken = key.accessToken;
+   } catch(error) {
+      console.log(error)
+   }
+}
+
   // uses the email of the currently logged in user to pull up the full user details for that user from the database
   async getCurrentUser(email) {
     try {
       // 3. add the code here to make a request for the user identified by email...don't forget to send the token!
+      const data = await makeRequest(
+         'users?email=' + email,
+         'GET',
+         null,
+         this.jwtToken
+       );
       
+       return data[0];
 
    } catch (error) {
       // if there were any errors display them

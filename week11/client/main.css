@@ -19,6 +19,34 @@ header {
    margin: 15px;
 }
 
+ul {
+   list-style-type: none;
+   padding: 0;
+}
+
+li {
+   padding: 0;
+   margin: 5px;
+   display: flex;
+   flex-direction: row;
+}
+
+p {
+   margin: 0;
+}
+
+p::before {
+  content: "\2000-\2000"; 
+}
+
+#content {
+   margin: 0 auto;
+}
+
+#userList li {
+   justify-content: center;
+}
+
 .hidden {
    display: none;
 }
