@@ -18,7 +18,11 @@ const notes = [
    {
       label: "Week 10 Notes",
       url: "week10/"
-    }
+   },
+   {
+      label: "Week 11 Notes",
+      url: "week11/client/week11.html"
+   }
  ]
 
  const teamActivities = [
