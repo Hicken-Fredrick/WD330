@@ -7,7 +7,7 @@ const authUser = new Auth;
 window.addEventListener('load', () => {
    document.getElementById('formSubmit').addEventListener('click', login);
    getUserList();
-   document.getElementById("addPost").addEventListener('click', () => {sendPost();});
+   document.getElementById("addPost").addEventListener('click', (e) => {sendPost(e);});
  });
 
 function login() {
@@ -53,7 +53,7 @@ async function getPosts() {
    }
 }
 
-async function sendPost() {
+async function sendPost(e) {
    const titleData = document.getElementById('title').value;
    const messageData = document.getElementById('message').value;
 
@@ -63,11 +63,7 @@ async function sendPost() {
       userId: authUser.user.id
    }
 
-   try{
-   const sendMessage = await makeRequest('posts', 'POST', data, authUser.token);
+   await makeRequest('posts', 'POST', data, authUser.token);
+   
    getPosts();
-   }catch(error) {
-      console.log(error);
-   }
-
 }
