@@ -39,11 +39,11 @@ li {
 p {
    margin: 0;
 }
-
+/*
 p::before {
   content: "\2000-\2000"; 
 }
-
+*/
 #content {
    margin: 0 auto;
 }

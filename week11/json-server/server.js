@@ -61,7 +61,7 @@ server.use((req, res, next) => {
       //jwt.verify(token, 'json-server-auth-123456');
       // Add claims to request
       req.claims = verifyToken(token);
-      req.body.userId = req.claims.email;
+      //req.body.userId = req.claims.id;
     }
     req.body.createdAt = Date.now();
   }

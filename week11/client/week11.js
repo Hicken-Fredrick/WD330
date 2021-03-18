@@ -6,7 +6,8 @@ const authUser = new Auth;
 //window.displayRadius = displayRadius;
 window.addEventListener('load', () => {
    document.getElementById('formSubmit').addEventListener('click', login);
-   getUserList()
+   getUserList();
+   document.getElementById("addPost").addEventListener('click', () => {sendPost();});
  });
 
 function login() {
@@ -20,14 +21,11 @@ async function getUserList() {
 
       var ul = document.getElementById('userList');
       ul.innerHTML = '';
-      for (var i = 0; i < data.length; i++) {
-       var li = document.createElement('li');
-       let p = document.createElement('p');
-       li.innerText = data[i].email;
-       p.innerText = data[i].password;
-       li.appendChild(p);
-       ul.appendChild(li);
-      }
+      data.forEach(element => {
+         var li = document.createElement('li');
+         li.innerText = `${element.email}  -  ${element.password}`;
+         ul.appendChild(li);
+      });
     } catch (error) {
       // if there were any errors display them
       console.log(error)
@@ -38,23 +36,38 @@ async function getPosts() {
    try {
      const data = await makeRequest('posts', 'GET', null, authUser.token);
      // make sure the element is shown
-     console.log(data);
      document.getElementById('content').classList.remove('hidden');
      var ul = document.getElementById('list');
      ul.innerHTML = '';
-     for (var i = 0; i < data.length; i++) {
+     data.forEach(element => {
       var li = document.createElement('li');
-      let p = document.createElement('p');
-      li.innerText = data[i].title;
-      p.innerText = data[i].content;
-      if(data[i].userId == authUser.user.id){
+      li.innerText = `${element.title}  -  ${element.content}`;
+      if(element.userId == authUser.user.id){
          li.classList.add('usersPost'); 
       } 
-      li.appendChild(p);
       ul.appendChild(li);
-     }
+     });
    } catch (error) {
      // if there were any errors display them
-     console.log(error)
+     console.log(error);
    }
- }
+}
+
+async function sendPost() {
+   const titleData = document.getElementById('title').value;
+   const messageData = document.getElementById('message').value;
+
+   const data = {
+      content: messageData,
+      title: titleData,
+      userId: authUser.user.id
+   }
+
+   try{
+   const sendMessage = await makeRequest('posts', 'POST', data, authUser.token);
+   getPosts();
+   }catch(error) {
+      console.log(error);
+   }
+
+}
