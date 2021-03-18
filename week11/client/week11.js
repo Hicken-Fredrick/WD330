@@ -63,7 +63,7 @@ async function sendPost(e) {
       userId: authUser.user.id
    }
 
-   await makeRequest('posts', 'POST', data, authUser.token);
+   const res = await makeRequest('posts', 'POST', data, authUser.token);
    
    getPosts();
 }
