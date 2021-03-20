@@ -60,7 +60,11 @@ const notes = [
    {
       label: "To-Do Project",
       url: "projectToDo/"
-    }
+   },
+   {
+      label: "PokiSurvive Project",
+      url: "projectGame/"  
+   }
  ]
 
  class workModel {
