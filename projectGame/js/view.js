@@ -16,7 +16,7 @@ export default class mainView {
       //fill container
       container.innerHTML = `<p class="pokemonName">${data.name}<p>
       <img src="${data.sprites.front_default}" class="pokeImg">
-      <p class="hp">${data.stats[0].base_stat}</p>
+      <p class="hp">HP: ${data.stats[0].base_stat}</p>
       `
       return container;
    }
