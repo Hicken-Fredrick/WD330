@@ -10,14 +10,13 @@ export default class mainController {
       document.getElementById('addRando').addEventListener('click', this.addRandomPoke)
    }
 
-   addRandomPoke() {
+   async addRandomPoke() {
       //get a random number to represent a pokemon
-      let num = Math.floor(1117 * Math.random()) + 1;
+      let num = Math.floor(1098 * Math.random()) + 1;
       console.log(num);
       //get pokemon using number
-      const data = pokiAPI.getPokiWithNum(num);
+      const data = await pokiAPI.getPokiWithNum(num);
       //pass data to view
-      console.log(data);
-      //view.addPokeToPlay(data);
+      view.addPokeToPlay(data);
    }
 }
