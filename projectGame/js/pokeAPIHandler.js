@@ -1,6 +1,6 @@
 const baseURL = `https://pokeapi.co/api/v2/`
 
-export default class pokiAPIHandler {
+export default class pokeAPIHandler {
 
    async getPokiWithNum(pokiNum) {
       return fetch(`${baseURL}pokemon/${pokiNum}`)

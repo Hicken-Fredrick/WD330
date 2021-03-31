@@ -8,6 +8,8 @@ export default class mainView {
       let pokemon = await this.buildPokemonCard(data);
       //append to destination
       destination.appendChild(pokemon);
+      //send back check for event
+      return pokemon;
    }
 
    async buildPokemonCard(data) {
@@ -15,10 +17,13 @@ export default class mainView {
       let container = document.createElement('div');
       //fill container
       container.innerHTML = `<p class="pokemonName">${data.name}<p>
-      <img src="${data.sprites.front_default}" class="pokeImg">
-      <p class="hp">HP: ${data.stats[0].base_stat}</p>
+      <img src="${data.img}" class="pokeImg">
       `
       return container;
+   }
+
+   async chooseStarter() {
+
    }
 
 }
