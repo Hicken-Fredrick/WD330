@@ -44,7 +44,6 @@ header h1{
 #actions {
    display: flex;
    flex-wrap: wrap;
-   text-align: center;
    justify-content: center;
 }
 
@@ -59,4 +58,17 @@ header h1{
 
 #actions div p {
    width: 32%;
+}
+
+/*Bigger screen specifics*/
+@media only screen and (min-width: 768px) {
+   #playArea div img {
+      width: 100%;
+      height: auto;
+   }
+
+   #actions div {
+      width: 50%;
+      max-width: 600px;
+   }
 }

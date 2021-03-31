@@ -50,6 +50,7 @@ export default class mainController {
          choice.push(convertToModel);
          let num = choice.length-1;
          let loc = view.addPokeToPlay(convertToModel);
+         if (num == 2) { showInfo(num) }
          loc.then((data) => {
             console.log(data);
             data.addEventListener('click', () => {showInfo(num)});
