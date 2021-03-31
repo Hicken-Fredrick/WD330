@@ -33,7 +33,7 @@ export default class mainController {
       //hide start buttons add play area in
       document.getElementById("playArea").classList.remove("hidden");
       document.getElementById("actions").classList.remove("hidden");
-      document.getElementById("landing").classList.add("hidden");
+      document.getElementById("buttons").classList.add("hidden");
 
       //generate poke number ids
       let pokeNums = [];
