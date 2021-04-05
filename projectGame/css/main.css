@@ -24,16 +24,22 @@ header h1{
 }
 
 #playArea {
+   padding: 8px 2px 4px 2px;
    display: flex;
    text-align: center;
    justify-content: center;
    margin-bottom: 5px;
+   border: 1px solid white;
 }
 
 #playArea div {
-   margin: 2px;
-   padding: 3px;
-   border: 1px solid gray;
+   margin: 0 auto;
+   padding: 0;
+}
+
+.selected {
+   border: 1px solid darkorange;
+   transform: translateY(-4px);
 }
 
 #playArea div img {

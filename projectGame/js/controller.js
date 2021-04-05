@@ -50,30 +50,9 @@ export default class mainController {
          choice.push(convertToModel);
          let num = choice.length-1;
          let loc = view.addPokeToPlay(convertToModel);
-         if (num == 2) { showInfo(num) }
          loc.then((data) => {
-            console.log(data);
-            data.addEventListener('click', () => {showInfo(num)});
+            data.addEventListener('click', () => {view.showInfo(data, choice, num)});
          })
       })
    }
-}
-
-function showInfo(num) {
-   //empty area
-   let outputArea = document.getElementById('actions');
-   outputArea.innerHTML = '';
-   //grab poke info and create container
-   let container = document.createElement('div');
-   let pokeData = choice[num];
-   //fill container
-   container.innerHTML = `
-   <p class="hp">HP: ${pokeData.statHP}</p>
-   <p class="atk">ATK: ${pokeData.statATK}</p>
-   <p class="def">DEF: ${pokeData.statDEF}</p>
-   <p class="spatk">SPATK: ${pokeData.statSPATK}</p>
-   <p class="spdef">SPDEF: ${pokeData.statSPDEF}</p>
-   <p class="spd">SPEED: ${pokeData.statSPD}</p>
-   `;
-   outputArea.appendChild(container);
 }
