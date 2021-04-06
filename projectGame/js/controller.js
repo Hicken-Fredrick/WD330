@@ -50,10 +50,31 @@ export default class mainController {
       })
       
       //input new buttons
-      view.emptyButtonArea();
-      let select = view.buildButton("Select");
-      select.addEventListener('click', selectStarter);
-      view.addGameButton(select);
+      putButtons("selectStarter");
+   }
+}
+
+function putButtons(type) {
+   switch(type) {
+      case "selectStarter": {
+         view.emptyButtonArea();
+         let select = view.buildButton("I CHOOSE YOU!");
+         select.addEventListener('click', selectStarter);
+         view.addGameButton(select);
+         break;
+      }
+      case "fight": {
+         view.emptyButtonArea();
+         let attack = view.buildButton("ATTACK");
+         view.addGameButton(attack);
+         break;
+      }
+      case "selectItem": {
+         view.emptyButtonArea();
+         let selectItem = view.buildButton("Select");
+         view.addGameButton(selectItem);
+         break;
+      }
    }
 }
 
@@ -67,9 +88,10 @@ function selectStarter() {
 }
 
 async function getOpponent() {
-   //empty play area & actions
+   //empty play area & actions, add instructions
    view.emptyPlayArea();
    view.emptyActionsArea();
+   view.addInstruction("FIGHT!");
    //add player
    await view.addPokeToPlay(player);
    //add vs
@@ -83,4 +105,6 @@ async function getOpponent() {
    enemy = convertToModel;
    //add opponent
    view.addPokeToPlay(enemy);
+   //add attack button
+   putButtons("fight");
 }
