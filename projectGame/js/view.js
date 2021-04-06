@@ -12,11 +12,22 @@ export default class mainView {
       return pokemon;
    }
 
+   addVS() {
+      //get play area
+      const destination = document.getElementById('playArea');
+      //container
+      let vsContainer = document.createElement('div');
+      //fill
+      vsContainer.innerHTML = `<img src="../images/vsImage.png">`
+      //add
+      destination.appendChild(vsContainer);
+   }
+
    async buildPokemonCard(data) {
       //create pieces of card
       let container = document.createElement('div');
       //fill container
-      container.innerHTML = `<p class="pokemonName">${data.name}<p>
+      container.innerHTML = `<p class="pokemonName">${data.name}</p>
       <img src="${data.img}" class="pokeImg">
       `
       return container;
@@ -46,15 +57,34 @@ export default class mainView {
    }
 
    emptyPlayArea() {
+      //empty play area
       document.getElementById("playArea").innerHTML = '';
    }
 
-   addGameButton() {
+   emptyButtonArea() {
+      //empty button area
+      document.getElementById("buttons").innerHTML = '';
+   }
 
+   buildButton(text) {
+      //build button
+      let container = document.createElement('button');
+      container.innerHTML = text;
+
+      //return button for adding event
+      return container;
+   }
+
+   addGameButton(button) {
+      //add button to button area
+      document.getElementById("buttons").appendChild(button);
    }
 
    addInstruction(text) {
-
+      //Empty instruction area
+      document.getElementById("instructions").innerHTML = '';
+      //Add new text to instruction area
+      document.getElementById("instructions").innerHTML = `${text}`;
    }
 
 }

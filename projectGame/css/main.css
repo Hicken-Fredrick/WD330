@@ -24,8 +24,18 @@ header h2{
    border: none !important;
 }
 
+#instructions {
+   text-align: center;
+   margin: 10px 0px 5px 0px;
+}
+
 #buttons {
    text-align: center;
+   margin: 5px 0px 0px 0px;
+}
+
+#buttons button{
+   padding: 5px 10px 5px 10px;
 }
 
 #playArea {

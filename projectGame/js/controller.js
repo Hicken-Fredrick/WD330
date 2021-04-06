@@ -18,9 +18,13 @@ export default class mainController {
    async startGame() {
       //Bring areas out of hidden state
       if(document.getElementById("playArea").classList.contains("hidden")) {
+         document.getElementById("instructions").classList.remove("hidden");
          document.getElementById("playArea").classList.remove("hidden");
          document.getElementById("actions").classList.remove("hidden");
       }
+
+      //put in base instrucitons
+      view.addInstruction("SELECT YOUR STARTER!");
 
       //generate poke number ids
       let pokeNums = [];
@@ -39,8 +43,39 @@ export default class mainController {
          let num = choice.length-1;
          let loc = view.addPokeToPlay(convertToModel);
          loc.then((data) => {
+            data.id = num;
             data.addEventListener('click', () => {view.showInfo(data, choice, num)});
          })
       })
+      
+      //input new buttons
+      view.emptyButtonArea();
+      let select = view.buildButton("Select");
+      select.addEventListener('click', selectStarter);
+      view.addGameButton(select);
    }
+}
+
+function selectStarter() {
+   //grab selected item
+   const selected = document.querySelector('.selected');
+   //use ID to set choice to player
+   player = choice[selected.id];
+
+   //setup opponent
+   getOpponent();
+}
+
+function getOpponent() {
+   //empty play area
+   view.emptyPlayArea();
+   //add player
+   view.addPokeToPlay(player);
+   //add vs
+   view.addVS();
+   //get opponent
+
+   //build opponent
+
+   //add opponent
 }
