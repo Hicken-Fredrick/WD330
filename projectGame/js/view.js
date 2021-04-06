@@ -25,7 +25,6 @@ export default class mainView {
    showInfo(loc, choice, num) {
       //get selected, remove selected, add selected to new
       const old = document.querySelector('.selected');
-      console.log(old)
       if(old != null) {old.classList.remove('selected')};
       loc.classList.add('selected');
       //empty area

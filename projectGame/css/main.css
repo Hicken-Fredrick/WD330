@@ -16,7 +16,8 @@ header h1{
 }
 
 .hidden {
-   display: none;
+   display: none !important;
+   border: none !important;
 }
 
 #buttons {
@@ -25,6 +26,7 @@ header h1{
 
 #playArea {
    padding: 8px 2px 4px 2px;
+   margin: 0 auto;
    display: flex;
    text-align: center;
    justify-content: center;
@@ -75,6 +77,10 @@ header h1{
 
    #actions div {
       width: 50%;
+      max-width: 600px;
+   }
+
+   #playArea {
       max-width: 600px;
    }
 }
