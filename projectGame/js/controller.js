@@ -67,6 +67,8 @@ function putButtons(type) {
          view.emptyButtonArea();
          let attack = view.buildButton("ATTACK");
          view.addGameButton(attack);
+         let SPattack = view.buildButton("SPECIAL ATTACK");
+         view.addGameButton(SPattack);
          break;
       }
       case "selectItem": {

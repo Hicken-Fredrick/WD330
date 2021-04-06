@@ -35,6 +35,7 @@ header h2{
 }
 
 #buttons button{
+   margin: 0px 2px 0px 8px;
    padding: 5px 10px 5px 10px;
 }
 
