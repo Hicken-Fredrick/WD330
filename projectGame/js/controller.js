@@ -7,6 +7,7 @@ const view = new mainView;
 let player;
 let choice = [];
 let enemy;
+let difficulty = .1;
 
 export default class mainController {
    
@@ -61,21 +62,25 @@ function selectStarter() {
    const selected = document.querySelector('.selected');
    //use ID to set choice to player
    player = choice[selected.id];
-
    //setup opponent
    getOpponent();
 }
 
-function getOpponent() {
-   //empty play area
+async function getOpponent() {
+   //empty play area & actions
    view.emptyPlayArea();
+   view.emptyActionsArea();
    //add player
-   view.addPokeToPlay(player);
+   await view.addPokeToPlay(player);
    //add vs
    view.addVS();
    //get opponent
-
+   const num = Math.floor(897 * Math.random()) + 1;
+   const info = await pokiAPI.getPokiWithNum(num);
    //build opponent
-
+   const convertToModel = new pokeModel(info);
+   convertToModel.enemyModifier(difficulty);
+   enemy = convertToModel;
    //add opponent
+   view.addPokeToPlay(enemy);
 }

@@ -14,7 +14,12 @@ export default class pokeModel {
 
    }
 
-   enemyModifier(loopNum) {
-      
+   enemyModifier(difficultyMod) {
+      this.statHP = `${Number(this.statHP) * (.7 + difficultyMod)}`;
+      this.statATK = `${Number(this.statATK) * (.7 + difficultyMod)}`;
+      this.statDEF = `${Number(this.statDEF) * (.7 + difficultyMod)}`;
+      this.statSPATK = `${Number(this.statSPATK) * (.7 + difficultyMod)}`;
+      this.statSPDEF = `${Number(this.statSPDEF) * (.7 + difficultyMod)}`;
+      this.statSPD = `${Number(this.statSPD) * (.7 + difficultyMod)}`;
    }
 }

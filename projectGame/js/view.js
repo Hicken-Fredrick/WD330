@@ -17,8 +17,9 @@ export default class mainView {
       const destination = document.getElementById('playArea');
       //container
       let vsContainer = document.createElement('div');
+      vsContainer.id = "vs";
       //fill
-      vsContainer.innerHTML = `<img src="../images/vsImage.png">`
+      vsContainer.innerHTML = `<p> VS! </p>`
       //add
       destination.appendChild(vsContainer);
    }
@@ -64,6 +65,11 @@ export default class mainView {
    emptyButtonArea() {
       //empty button area
       document.getElementById("buttons").innerHTML = '';
+   }
+
+   emptyActionsArea() {
+      //empty actions area
+      document.getElementById("actions").innerHTML = '';
    }
 
    buildButton(text) {

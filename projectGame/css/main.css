@@ -53,10 +53,22 @@ header h2{
    padding: 0;
 }
 
+#vs {
+   display: flex;
+}
+
+#vs p{
+   margin: auto;
+}
+
 .selected {
    border: 1px solid darkorange;
    transform: translateY(-4px);
    background: rgba(0, 0, 0, .25);
+}
+
+.pokemonName {
+   text-transform: capitalize;
 }
 
 #playArea div img {
