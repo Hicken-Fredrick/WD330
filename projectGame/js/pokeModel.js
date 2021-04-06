@@ -9,4 +9,12 @@ export default class pokeModel {
       this.statSPDEF = `${data.stats[4].base_stat}`;
       this.statSPD = `${data.stats[5].base_stat}`;
    }
+
+   addStat(stat) {
+
+   }
+
+   enemyModifier(loopNum) {
+      
+   }
 }

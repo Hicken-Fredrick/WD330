@@ -15,25 +15,12 @@ export default class mainController {
       document.getElementById('play').addEventListener('click', this.startGame);
    }
 
-   async addRandomPoke() {
+   async startGame() {
+      //Bring areas out of hidden state
       if(document.getElementById("playArea").classList.contains("hidden")) {
          document.getElementById("playArea").classList.remove("hidden");
          document.getElementById("actions").classList.remove("hidden");
       }
-      //get a random number to represent a pokemon
-      let num = Math.floor(897 * Math.random()) + 1;
-      //get pokemon using number
-      const data = await pokiAPI.getPokiWithNum(num);
-      //pass data to view
-      const poke = new pokeModel(data);
-      view.addPokeToPlay(poke);
-   }
-
-   async startGame() {
-      //hide start buttons add play area in
-      document.getElementById("playArea").classList.remove("hidden");
-      document.getElementById("actions").classList.remove("hidden");
-      document.getElementById("buttons").classList.add("hidden");
 
       //generate poke number ids
       let pokeNums = [];
@@ -44,6 +31,7 @@ export default class mainController {
       }
 
       //get pokemon info with id nums, push through model, add to mat
+      view.emptyPlayArea();
       pokeNums.forEach(async poke => {
          const info = await pokiAPI.getPokiWithNum(poke);
          const convertToModel = new pokeModel(info);

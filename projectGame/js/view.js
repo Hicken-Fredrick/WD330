@@ -45,4 +45,16 @@ export default class mainView {
       outputArea.appendChild(container);
    }
 
+   emptyPlayArea() {
+      document.getElementById("playArea").innerHTML = '';
+   }
+
+   addGameButton() {
+
+   }
+
+   addInstruction(text) {
+
+   }
+
 }
