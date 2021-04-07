@@ -39,20 +39,34 @@ export default class pokeModel {
    }
 
    enemyModifier(difficultyMod) {
-      this.statHP = `${Math.floor(Number(this.statHP) * (.7 + difficultyMod))}`;
+      this.statHP = `${Math.floor(Number(this.statHP) * (.7 + (difficultyMod/10)))}`;
       this.curHP = this.statHP;
-      this.statATK = `${Number(this.statATK) * (.7 + difficultyMod)}`;
-      this.statDEF = `${Number(this.statDEF) * (.7 + difficultyMod)}`;
-      this.statSPATK = `${Number(this.statSPATK) * (.7 + difficultyMod)}`;
-      this.statSPDEF = `${Number(this.statSPDEF) * (.7 + difficultyMod)}`;
-      this.statSPD = `${Number(this.statSPD) * (.7 + difficultyMod)}`;
+      this.statATK = `${Number(this.statATK) * (.7 + (difficultyMod/10))}`;
+      this.statDEF = `${Number(this.statDEF) * (.7 + (difficultyMod/10))}`;
+      this.statSPATK = `${Number(this.statSPATK) * (.7 + (difficultyMod/10))}`;
+      this.statSPDEF = `${Number(this.statSPDEF) * (.7 + (difficultyMod/10))}`;
+      this.statSPD = `${Number(this.statSPD) * (.7 + (difficultyMod/10))}`;
    }
 
-   takeHit(dmg) {
-      //take a hit
-      this.curHP = this.curHP - dmg;
-      //return alive status
-      if(this.curHP <= 0) {return false}
-      else{return true}
+   takeHit(dmg, type) {
+      //take hit
+      switch(type) {
+         //standard attack
+         case "atk": {
+            this.curHP = Math.floor(this.curHP - ((dmg - this.statDEF)+1));
+            //return alive status
+            if(this.curHP <= 0) {return false}
+            else{return true}
+            break;
+         }
+         //special attack
+         case "spatk": {
+            this.curHP = Math.floor(this.curHP - ((dmg - this.statSPDEF)+1));
+            //return alive status
+            if(this.curHP <= 0) {return false}
+            else{return true}
+            break;
+         }
+      }
    }
 }

@@ -118,4 +118,8 @@ export default class mainView {
       document.getElementById("instructions").innerHTML = `${text}`;
    }
 
+   redrawHP(hp, id){
+      //get hp loc
+      document.querySelector(`#${id} .hp`).innerHTML = `HP: ${hp}`;
+   }
 }

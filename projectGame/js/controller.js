@@ -7,51 +7,51 @@ const view = new mainView;
 let player;
 let choice = [];
 let enemy;
-let difficulty = .1;
+let difficulty = 1;
 
 export default class mainController {
-   
+   //add game start
    addActions() {
-      document.getElementById('continue').addEventListener('click', this.addRandomPoke);
-      document.getElementById('play').addEventListener('click', this.startGame);
+      document.getElementById('play').addEventListener('click', startGame);
    }
 
-   async startGame() {
-      //Bring areas out of hidden state
-      if(document.getElementById("playArea").classList.contains("hidden")) {
-         document.getElementById("instructions").classList.remove("hidden");
-         document.getElementById("playArea").classList.remove("hidden");
-         document.getElementById("actions").classList.remove("hidden");
-      }
+}
 
-      //put in base instrucitons
-      view.addInstruction("SELECT YOUR STARTER!");
+async function startGame() {
+   //Bring areas out of hidden state
+   if(document.getElementById("playArea").classList.contains("hidden")) {
+      document.getElementById("instructions").classList.remove("hidden");
+      document.getElementById("playArea").classList.remove("hidden");
+      document.getElementById("actions").classList.remove("hidden");
+   }
 
-      //generate poke number ids
-      let pokeNums = [];
-      let num;
-      for (let i = 0; i < 3; i++) {
-         num = Math.floor(897 * Math.random()) + 1;
-         pokeNums.push(num);
-      }
+   //put in base instrucitons
+   view.addInstruction("SELECT YOUR STARTER!");
 
-      //get pokemon info with id nums, push through model, add to mat
-      view.emptyPlayArea();
-      pokeNums.forEach(async poke => {
-         const info = await pokiAPI.getPokiWithNum(poke);
-         const convertToModel = new pokeModel(info);
-         choice.push(convertToModel);
-         let num = choice.length-1;
-         let loc = view.addPokeToPlay(convertToModel);
-         loc.then((data) => {
-            data.id = num;
-            data.addEventListener('click', () => {view.showInfo(data, choice, num)});
-         })
+   //generate poke number ids
+   let pokeNums = [];
+   let num;
+   for (let i = 0; i < 3; i++) {
+      num = Math.floor(897 * Math.random()) + 1;
+      pokeNums.push(num);
+   }
+
+   //get pokemon info with id nums, push through model, add to mat
+   view.emptyPlayArea();
+   pokeNums.forEach(async poke => {
+      const info = await pokiAPI.getPokiWithNum(poke);
+      const convertToModel = new pokeModel(info);
+      choice.push(convertToModel);
+      let num = choice.length-1;
+      let loc = view.addPokeToPlay(convertToModel);
+      loc.then((data) => {
+         data.id = num;
+         data.addEventListener('click', () => {view.showInfo(data, choice, num)});
       })
-      
-      //input new buttons
-      putButtons("selectStarter");
-   }
+   })
+   
+   //input new buttons
+   putButtons("selectStarter");
 }
 
 function putButtons(type) {
@@ -80,6 +80,14 @@ function putButtons(type) {
          view.emptyButtonArea();
          let selectItem = view.buildButton("Select");
          view.addGameButton(selectItem);
+         break;
+      }
+      //new game
+      case "newGame": {
+         view.emptyButtonArea();
+         let newGame = view.buildButton("New Game");
+         newGame.addEventListener('click', startGame);
+         view.addGameButton(newGame);
          break;
       }
    }
@@ -118,6 +126,8 @@ async function getOpponent() {
 
 //handles basic attack
 function handleAttack() {
+   //clear buttons
+   view.emptyButtonArea();
    //choose enemy attack
    const enemyAttack = getEnemyAttack();
    //complete outcome
@@ -126,6 +136,8 @@ function handleAttack() {
 
 //handles special attack
 function handleSPAttack(){
+   //clear buttons
+   view.emptyButtonArea();
    //choose enemy attack
    const enemyAttack = getEnemyAttack();
    //complete outcome
@@ -134,26 +146,30 @@ function handleSPAttack(){
 
 function getEnemyAttack() {
    //decide highest
-   if(enemy.statATK > enemy.statSPATK) {const enemyAttack = enemy.statATK}
-   else {const enemyAttack = enemy.statSPATK}
-   //return
-   return enemyAttack;
+   if(enemy.statATK > enemy.statSPATK) {return enemy.statATK}
+   else {return enemy.statSPATK}
 }
 
 function turnOutcome(playerAttack, enemyAttack) {
    //if player is faster than enemy
    if(player.statSPD >= enemy.statSPD){
-      const isEnemyAlive = enemy.takeHit(playerAttack);
+      const isEnemyAlive = enemy.takeHit(playerAttack, "atk");
       //enemy survives attack
       if(isEnemyAlive) {
-         const isPlayerAlive = player.takeHit(enemyAttack);
+         const isPlayerAlive = player.takeHit(enemyAttack, "atk");
          //player survives attack
          if(isPlayerAlive) {
-            //next round
+            //next round redraw hp
+            view.redrawHP(player.curHP, "player");
+            view.redrawHP(enemy.curHP, "enemy");
+            //put fight buttons back
+            putButtons("fight");
          }
          //player dies
          else {
             //game over
+            view.addInstruction(`GAME OVER! You Beat ${difficulty-1} Opponents`);
+            putButtons("newGame");
          }
       }
       //enemy dies
@@ -163,13 +179,17 @@ function turnOutcome(playerAttack, enemyAttack) {
    }
    //if player is slower than enemy
    else {
-      const isPlayerAlive = player.takeHit(enemyAttack);
+      const isPlayerAlive = player.takeHit(enemyAttack, "spatk");
       //player survives attack
       if(isPlayerAlive) {
-         const isEnemyAlive = enemy.takeHit(playerAttack);
+         const isEnemyAlive = enemy.takeHit(playerAttack, "spatk");
          //enemy survives attack
          if(isEnemyAlive) {
-            //next round
+            //next round redraw hp
+            view.redrawHP(player.curHP, "player");
+            view.redrawHP(enemy.curHP, "enemy");
+            //put fight buttons back
+            putButtons("fight");
          }
          //enemy dies
          else {
@@ -179,6 +199,8 @@ function turnOutcome(playerAttack, enemyAttack) {
       //player dies
       else {
          //game over
+         view.addInstruction(`GAME OVER! You Beat ${difficulty-1} Opponents`);
+         putButtons("newGame");
       }
    }
 }
