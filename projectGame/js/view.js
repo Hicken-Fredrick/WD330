@@ -12,6 +12,19 @@ export default class mainView {
       return pokemon;
    }
 
+   //same as above but has an HP stat showing
+   async addCharacterToPlay(data, id) {
+      //get play area
+      const destination = document.getElementById('playArea');
+      //create holder and populate
+      let pokemon = await this.buildCharacterCard(data);
+      pokemon.id = id;
+      //append to destination
+      destination.appendChild(pokemon);
+      //send back check for event
+      return pokemon;
+   }
+
    addVS() {
       //get play area
       const destination = document.getElementById('playArea');
@@ -30,6 +43,18 @@ export default class mainView {
       //fill container
       container.innerHTML = `<p class="pokemonName">${data.name}</p>
       <img src="${data.img}" class="pokeImg">
+      `
+      return container;
+   }
+
+   //same as above but has an HP stat area
+   async buildCharacterCard(data) {
+      //create pieces of card
+      let container = document.createElement('div');
+      //fill container
+      container.innerHTML = `<p class="pokemonName">${data.name}</p>
+      <img src="${data.img}" class="pokeImg">
+      <p class="hp">HP: ${data.curHP}</p>
       `
       return container;
    }

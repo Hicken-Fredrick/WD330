@@ -56,6 +56,7 @@ export default class mainController {
 
 function putButtons(type) {
    switch(type) {
+      //creates buttons and add events for choosing you character
       case "selectStarter": {
          view.emptyButtonArea();
          let select = view.buildButton("I CHOOSE YOU!");
@@ -63,14 +64,18 @@ function putButtons(type) {
          view.addGameButton(select);
          break;
       }
+      //creates buttons and adds events  for fighting
       case "fight": {
          view.emptyButtonArea();
          let attack = view.buildButton("ATTACK");
+         attack.addEventListener('click', handleAttack);
          view.addGameButton(attack);
          let SPattack = view.buildButton("SPECIAL ATTACK");
+         SPattack.addEventListener('click', handleSPAttack);
          view.addGameButton(SPattack);
          break;
       }
+      //creates buttons and adds event for selecting item reward
       case "selectItem": {
          view.emptyButtonArea();
          let selectItem = view.buildButton("Select");
@@ -95,7 +100,7 @@ async function getOpponent() {
    view.emptyActionsArea();
    view.addInstruction("FIGHT!");
    //add player
-   await view.addPokeToPlay(player);
+   await view.addCharacterToPlay(player, "player");
    //add vs
    view.addVS();
    //get opponent
@@ -106,7 +111,74 @@ async function getOpponent() {
    convertToModel.enemyModifier(difficulty);
    enemy = convertToModel;
    //add opponent
-   view.addPokeToPlay(enemy);
+   view.addCharacterToPlay(enemy, "enemy");
    //add attack button
    putButtons("fight");
+}
+
+//handles basic attack
+function handleAttack() {
+   //choose enemy attack
+   const enemyAttack = getEnemyAttack();
+   //complete outcome
+   turnOutcome(player.statATK, enemyAttack);
+}
+
+//handles special attack
+function handleSPAttack(){
+   //choose enemy attack
+   const enemyAttack = getEnemyAttack();
+   //complete outcome
+   turnOutcome(player.statSPATK, enemy.statSPATK);
+}
+
+function getEnemyAttack() {
+   //decide highest
+   if(enemy.statATK > enemy.statSPATK) {const enemyAttack = enemy.statATK}
+   else {const enemyAttack = enemy.statSPATK}
+   //return
+   return enemyAttack;
+}
+
+function turnOutcome(playerAttack, enemyAttack) {
+   //if player is faster than enemy
+   if(player.statSPD >= enemy.statSPD){
+      const isEnemyAlive = enemy.takeHit(playerAttack);
+      //enemy survives attack
+      if(isEnemyAlive) {
+         const isPlayerAlive = player.takeHit(enemyAttack);
+         //player survives attack
+         if(isPlayerAlive) {
+            //next round
+         }
+         //player dies
+         else {
+            //game over
+         }
+      }
+      //enemy dies
+      else {
+         //win
+      }
+   }
+   //if player is slower than enemy
+   else {
+      const isPlayerAlive = player.takeHit(enemyAttack);
+      //player survives attack
+      if(isPlayerAlive) {
+         const isEnemyAlive = enemy.takeHit(playerAttack);
+         //enemy survives attack
+         if(isEnemyAlive) {
+            //next round
+         }
+         //enemy dies
+         else {
+            //win
+         }
+      }
+      //player dies
+      else {
+         //game over
+      }
+   }
 }
