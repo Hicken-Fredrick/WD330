@@ -52,6 +52,7 @@ header h2{
 #playArea div {
    margin: 0 auto;
    padding: 0;
+   min-width: 100px;
 }
 
 #vs {
@@ -94,6 +95,11 @@ header h2{
 
 #actions div p {
    width: 32%;
+}
+
+.itemInfo {
+   margin: 8px 0px 8px 0px;
+   width: 100% !important;
 }
 
 /*Bigger screen specifics*/

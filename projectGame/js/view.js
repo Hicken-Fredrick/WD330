@@ -111,7 +111,7 @@ export default class mainView {
       let container = document.createElement('div');
       let itemInfo = choice[num];
       //put in item description
-      container.innerHTML = `${itemInfo.info.description}`;
+      container.innerHTML = `<p class="itemInfo">${itemInfo.info.description}</p>`;
       outputArea.appendChild(container);
    }
 

@@ -12,36 +12,38 @@ export default class pokeModel {
    }
 
    addStat(stat) {
-      const statBonus = 75;
-      const hpBonus = 250;
+      const statBonus = Number(75);
+      const hpBonus = Number(250);
       switch(stat){
          case "heal": {
             this.curHP = this.statHP;
             break;
          }
          case "hpmax": {
-            this.statHP += hpBonus;
-            this.curHP += hpBonus;
+            this.statHP = (Number(this.statHP) + hpBonus);
+            this.curHP = (Number(this.curHP) + hpBonus);
             break;
          }
          case "atk": {
-            this.statATK += statBonus;
+            this.statATK = (Number(this.statATK) + statBonus);
+            console.log(this.statATK);
             break;
          }
          case "spatk": {
-            this.statSPATK += statBonus;
+            this.statSPATK = (Number(this.statSPATK) + statBonus);
+            console.log(this.statSPATK);
             break;
          }
          case "def": {
-            this.statDEF += statBonus;
+            this.statDEF = (Number(this.statDEF) + statBonus);
             break;
          }
          case "spdef": {
-            this.statSPDEF += statBonus;
+            this.statSPDEF = (Number(this.statSPDEF) + statBonus);
             break;
          }
          case "spd": {
-            this.statSPD += statBonus;
+            this.statSPD = (Number(this.statSPD) + statBonus);
             break;
          }
          
