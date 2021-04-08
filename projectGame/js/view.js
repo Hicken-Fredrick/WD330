@@ -25,6 +25,17 @@ export default class mainView {
       return pokemon;
    }
 
+   async addItemToPlay(itemInfo) {
+      //get play area
+      const destination = document.getElementById('playArea');
+      //create holder and populate
+      let item = await this.buildItemCard(itemInfo);
+      //append to destination
+      destination.appendChild(item);
+      //send back check for event
+      return item;
+   }
+
    addVS() {
       //get play area
       const destination = document.getElementById('playArea');
@@ -49,7 +60,7 @@ export default class mainView {
 
    //same as above but has an HP stat area
    async buildCharacterCard(data) {
-      //create pieces of card
+      //create container
       let container = document.createElement('div');
       //fill container
       container.innerHTML = `<p class="pokemonName">${data.name}</p>
@@ -59,11 +70,19 @@ export default class mainView {
       return container;
    }
 
-   showInfo(loc, choice, num) {
+   async buildItemCard(item) {
+      //create container
+      let container = document.createElement('div');
+      //fill container
+      container.innerHTML = `<p class="itemName">${item.info.name}</p>
+      <img src="${item.info.img}" class="itemImage">`
+      //return container
+      return container;
+   }
+
+   showInfoPoke(loc, choice, num) {
       //get selected, remove selected, add selected to new
-      const old = document.querySelector('.selected');
-      if(old != null) {old.classList.remove('selected')};
-      loc.classList.add('selected');
+      moveSelected(loc);
       //empty area
       let outputArea = document.getElementById('actions');
       outputArea.innerHTML = '';
@@ -79,6 +98,20 @@ export default class mainView {
       <p class="spdef">SPDEF: ${pokeData.statSPDEF}</p>
       <p class="spd">SPEED: ${pokeData.statSPD}</p>
       `;
+      outputArea.appendChild(container);
+   }
+
+   showInfoItem(loc, choice, num) {
+      //get selected, remove selected, add selected to new
+      moveSelected(loc);
+      //empty area
+      let outputArea = document.getElementById('actions');
+      outputArea.innerHTML = '';
+      //grab item info and create container
+      let container = document.createElement('div');
+      let itemInfo = choice[num];
+      //put in item description
+      container.innerHTML = `${itemInfo.info.description}`;
       outputArea.appendChild(container);
    }
 
@@ -122,4 +155,10 @@ export default class mainView {
       //get hp loc
       document.querySelector(`#${id} .hp`).innerHTML = `HP: ${hp}`;
    }
+}
+
+function moveSelected(loc) {
+   const old = document.querySelector('.selected');
+   if(old != null) {old.classList.remove('selected')};
+   loc.classList.add('selected');
 }
